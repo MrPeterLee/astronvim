@@ -1,6 +1,8 @@
 # AstroNvim User Configuration
 
-My personal user config for AstroVim
+My personal flavour of AstroNvim.
+
+All credits goes to original Author: [Mehalter][https://git.mehalter.com/mehalter/astronvim_user].
 
 ## Installation
 
