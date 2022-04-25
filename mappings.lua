@@ -1,3 +1,5 @@
+local utils = require("core.utils")
+
 return {
 	setup = function()
 		local unmap = vim.keymap.del
@@ -19,6 +21,16 @@ return {
 		unmap("v", ">")
 		unmap("v", "J")
 		unmap("v", "K")
+
+		-- toggle glances in terminal
+		map("n", "<leader>tt", function()
+			utils.toggle_term_cmd("glances")
+		end, { desc = "ToggleTerm Glances" })
+
+		-- toggle ipython in terminal
+		map("n", "<leader>ti", function()
+			utils.toggle_term_cmd("ipython")
+		end, { desc = "ToggleTerm iPython" })
 
 		-- move current line up and down
 		map("n", "<C-k>", "<Cmd>call utils#SwitchLine(line('.'), 'up')<CR>", { desc = "Switch line up" })

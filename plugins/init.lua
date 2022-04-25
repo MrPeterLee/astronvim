@@ -188,9 +188,9 @@ return function(plugins)
 
 	-- Disabled Default Plugins
 	plugins["glepnir/dashboard-nvim"] = nil
-	plugins["karb94/neoscroll.nvim"] = nil
 	-- plugins["max397574/better-escape.nvim"] = nil
-	plugins["lukas-reineke/indent-blankline.nvim"] = nil
+	plugins["karb94/neoscroll.nvim"] = nil
+	-- plugins["lukas-reineke/indent-blankline.nvim"] = nil
 	-- plugins["numToStr/Comment.nvim"] = nil
 
 	-- Disabled Default Lazy Loading
