@@ -6,6 +6,7 @@ return function()
 		null_ls.setup({
 			debug = false,
 			sources = {
+
 				builtins.code_actions.gitsigns,
 				builtins.code_actions.shellcheck,
 				builtins.formatting.stylua,
@@ -15,8 +16,24 @@ return function()
 					extra_filetypes = { "rmd" },
 				}),
 				builtins.formatting.shfmt,
-				-- builtins.diagnostics.cue_fmt,
 				builtins.diagnostics.shellcheck,
+				builtins.diagnostics.codespell.with({
+					Filetypes = { "python", "javascript" },
+				}),
+
+				-- Spell completion for text files
+				builtins.completion.spell.with({
+					Filetypes = { "markdown", "text" },
+				}),
+				-- Spell diagnostic for text files
+				-- builtins.diagnostics.cspell,
+
+				-- zsh - only highlights "parsing error" as a msg
+				builtins.diagnostics.zsh,
+				-- makefile
+				-- builtins.diagnostics.checkmate,
+				-- github workflow
+				builtins.diagnostics.actionlint,
 			},
 			on_attach = function(client)
 				if client.resolved_capabilities.document_formatting then

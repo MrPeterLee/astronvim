@@ -1,3 +1,4 @@
+
 " " Create command alias safely, see https://stackoverflow.com/q/3878692/6064933
 " " The following two functions are taken from answer below on SO:
 " " https://stackoverflow.com/a/10708687/6064933
@@ -81,16 +82,29 @@
 " endfunction
 "
 function! utils#SwitchLine(src_line_idx, direction) abort
-  if a:direction ==# 'up'
-    if a:src_line_idx == 1
-        return
+  " Check if the current buffer is modifiable
+  if &modifiable
+    " Case for normal editing
+    if a:direction ==# 'up'
+      if a:src_line_idx == 1
+          return
+      endif
+      move-2
+    elseif a:direction ==# 'down'
+      if a:src_line_idx == line('$')
+          return
+      endif
+      move+1
     endif
-    move-2
-  elseif a:direction ==# 'down'
-    if a:src_line_idx == line('$')
-        return
+  else
+    " Case for Neo-Tree buffers
+    " If non-modifiable -> Neo-Tree:: map <C-j> to j; <C-k> to k
+    if a:direction ==# 'up'
+      call feedkeys("\<up>")
     endif
-    move+1
+    if a:direction ==# 'down'
+      call feedkeys("\<down>")
+    endif
   endif
 endfunction
 
@@ -207,3 +221,5 @@ endfunction
 "
 "   return l:status
 " endfunction
+"
+"

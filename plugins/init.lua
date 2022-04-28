@@ -28,7 +28,7 @@ return function(plugins)
 		},
 		{
 			"dhruvasagar/vim-table-mode",
-			cmd = "TableModeToggle",
+			cmd = { "TableModeToggle", "TableModeEnable", "TableModeDisable" },
 			setup = function()
 				vim.g.table_mode_corner = "|"
 			end,
@@ -116,7 +116,11 @@ return function(plugins)
 			event = { "BufRead", "BufNewFile" },
 			branch = "v1",
 			config = function()
-				require("hop").setup()
+				require("hop").setup({
+					case_insensitive = true,
+					char2_fallback_key = "<CR>",
+					quit_key = "<Esc>",
+				})
 			end,
 		},
 		{
@@ -182,8 +186,77 @@ return function(plugins)
 				vim.g.simple_todo_map_keys = false
 			end,
 		},
+
+		-- display function context on top of the screen
+		-- good plugin, but prompts a deprecation warning; disabled temporarily
+		-- {
+		-- 	"romgrk/nvim-treesitter-context",
+		-- 	config = function()
+		-- 		vim.defer_fn(function()
+		-- 			require("treesitter-context.config").setup({ enable = true })
+		-- 		end, 2000)
+		-- 	end,
+		-- },
+
+		-- Select python functions
+		{ "mfussenegger/nvim-ts-hint-textobject" },
+
 		{ "wakatime/vim-wakatime", event = "BufRead" },
-		{ "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
+
+		-- GitHub copilot
+		{
+			"github/copilot.vim",
+		},
+
+		-- Highlight to-do syntax
+		{
+			"folke/todo-comments.nvim",
+			event = "BufRead",
+			config = function()
+				vim.defer_fn(function()
+					require("todo-comments").setup()
+				end, 2000)
+			end,
+		},
+
+		-- Harpoon: Maintain a list of hot-files for jumping
+		{
+			"ThePrimeagen/harpoon",
+			config = function()
+				vim.defer_fn(function()
+					require("user.plugins.harpoon").setup()
+				end, 2000)
+			end,
+		},
+
+		-- navigate between old and new git commits for the current line and view the diffs easily.
+		-- use { "rhysd/git-messenger.vim" }
+
+		-- To speed up start-up time by 10ms
+		{ "nathom/filetype.nvim" },
+
+		-- makes default vim ui prompts nicer
+		{
+			"stevearc/dressing.nvim",
+			config = function()
+				vim.defer_fn(function()
+					require("dressing").setup({
+						-- Can be 'left', 'right', or 'center'
+						prompt_align = "left",
+					})
+				end, 2000)
+			end,
+		},
+
+		-- hit ctrl-p to yield a palette similar to vsc command search
+		{
+			"mrjones2014/legendary.nvim",
+			keys = { [[<C-p>]] },
+			config = function()
+				require("user.plugins.legendary").setup()
+			end,
+			requires = { "stevearc/dressing.nvim" },
+		},
 	}
 
 	-- Disabled Default Plugins

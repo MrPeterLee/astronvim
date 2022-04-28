@@ -30,51 +30,64 @@ end
 
 -- Normal Mode <leader> Mappings
 local Nmappings = {
+	["<space>"] = { "<cmd>Telescope buffers<CR>", "Switch Buffer" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Bye Buffer" },
 	["C"] = { "<cmd>bdelete!<cr>", "Close Buffer" },
 	["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
-	["H"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
+	["h"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
 	["<cr>"] = { '<esc>/<++><cr>"_c4l', "Next Template" },
 	["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
 	["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
 	["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
 
-	a = {
-		name = "Annotate",
-		["<cr>"] = {
-			function()
-				require("neogen").generate()
-			end,
-			"Current",
-		},
-		c = {
-			function()
-				require("neogen").generate({ type = "class" })
-			end,
-			"Class",
-		},
-		f = {
-			function()
-				require("neogen").generate({ type = "func" })
-			end,
-			"Function",
-		},
-		t = {
-			function()
-				require("neogen").generate({ type = "type" })
-			end,
-			"Type",
-		},
-		F = {
-			function()
-				require("neogen").generate({ type = "file" })
-			end,
-			"File",
+	l = {
+		-- Github Copilot
+		c = { "<cmd>Copilot<cr>", "Copilot" },
+
+		d = {
+			name = "DocString",
+			["<cr>"] = {
+				function()
+					require("neogen").generate()
+				end,
+				"Current",
+			},
+			c = {
+				function()
+					require("neogen").generate({ type = "class" })
+				end,
+				"Class",
+			},
+			f = {
+				function()
+					require("neogen").generate({ type = "func" })
+				end,
+				"Function",
+			},
+			t = {
+				function()
+					require("neogen").generate({ type = "type" })
+				end,
+				"Type",
+			},
+			F = {
+				function()
+					require("neogen").generate({ type = "file" })
+				end,
+				"File",
+			},
 		},
 	},
 
+	t = {
+		-- toggle glances in terminal
+		p = { '<cmd>lua require("core.utils").toggle_term_cmd("ipython")<cr>', "iPython" },
+		-- toggle ipython in terminal
+		g = { '<cmd>lua require("core.utils").toggle_term_cmd("export TERM=xterm && glances")<cr>', "glances" },
+	},
+
 	f = {
-		name = "Telescope",
+		name = "Find",
 		["?"] = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		["'"] = { "<cmd>Telescope marks<cr>", "Marks" },
 		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -89,9 +102,12 @@ local Nmappings = {
 		n = { "<cmd>Telescope notify<cr>", "Notifications" },
 		p = { "<cmd>Telescope project<cr>", "Projects" },
 		r = { "<cmd>Telescope registers<cr>", "Registers" },
-		t = { "<cmd>Telescope colorscheme<cr>", "Themes" },
+		t = { "<cmd>TodoTelescope<cr>", "To-do List" },
+		T = { "<cmd>Telescope colorscheme<cr>", "Themes" },
 		w = { "<cmd>Telescope live_grep<cr>", "Words" },
+		y = { "<cmd>Telescope neoclip<cr>", "Yank History" },
 		o = { nil },
+		-- to-do comments
 	},
 
 	m = {
@@ -119,15 +135,15 @@ local Nmappings = {
 		w = { vim_opt_toggle("wrap", true, false, "Soft Wrap"), "Toggle Soft Wrapping" },
 		W = { vim_opt_toggle("textwidth", 80, 0, "Hard Wrap"), "Toggle Hard Wrapping" },
 		m = { "<cmd>Glow<cr>", "Preview Markdown" },
-		M = {
+		e = {
 			function()
 				require("nabla").popup()
 			end,
-			"Preview Math",
+			"Preview Equation",
 		},
 	},
 
-	h = {
+	o = {
 		name = "Hop",
 		c = { "<cmd>HopChar1<cr>", "Character" },
 		C = { "<cmd>HopChar2<cr>", "2 Characters" },
@@ -137,28 +153,13 @@ local Nmappings = {
 	},
 
 	s = {
-		name = "Swap",
+		name = "Switch Board",
 		b = { nil },
 		h = { nil },
 		m = { nil },
-		n = { nil },
 		r = { nil },
 		k = { nil },
 		c = { nil },
-		p = { "Next Parameter" },
-		P = { "Previous Parameter" },
-		s = {
-			function()
-				require("syntax-tree-surfer").select()
-			end,
-			"Surf",
-		},
-		S = {
-			function()
-				require("syntax-tree-surfer").select_current_node()
-			end,
-			"Surf Node",
-		},
 	},
 
 	n = {
@@ -320,6 +321,9 @@ local Dmappings = {
 
 local Vmappings = {
 	["/"] = { "Comment" },
+
+	-- Github Copilot
+	l = { c = { "<cmd>Copilot<cr>", "Github Copilot" } },
 
 	h = {
 		name = "Hop",

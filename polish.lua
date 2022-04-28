@@ -3,6 +3,18 @@ return function()
 	local g = vim.g
 
 	-- Options
+	-- enable spelling check
+	set.spell = true
+	set.spelllang = { "en_us" }
+	--  After adding a word to 'spellfile' with the above commands its associated
+	--  '.spl' file will automatically be updated and reloaded. If you change
+	--  'spellfile' manually you need to use the |:mkspell| command. This sequence of
+	--  commands mostly works well:
+	--
+	--      :edit <spellfile; e.g. en.utf-8.add>
+	--      (make changes to the spell file)
+	--      :mkspell! %
+
 	-- show whitespace characters
 	set.list = true
 	set.listchars = {
@@ -21,7 +33,7 @@ return function()
 	set.linebreak = true
 
 	-- set spell and thesaurus files
-	set.spellfile = "~/.config/nvim/lua/user/spell/en.utf-8.add"
+	-- set.spellfile = "~/.config/nvim/spell/en.utf-8.add"
 	-- set.thesaurus = "~/.config/nvim/lua/user/spell/mthesaur.txt"
 	-- set Treesitter based folding and disable auto-folding on open
 	set.foldenable = false
@@ -39,4 +51,9 @@ return function()
 
 	-- Filetypes
 	require("user.filetype").setup()
+
+	-- Load vimscript
+	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/plugins.vim")
+	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/utils.vim")
+	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/autocmd.vim")
 end

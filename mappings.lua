@@ -1,5 +1,3 @@
-local utils = require("core.utils")
-
 return {
 	setup = function()
 		local unmap = vim.keymap.del
@@ -22,21 +20,29 @@ return {
 		unmap("v", "J")
 		unmap("v", "K")
 
-		-- toggle glances in terminal
-		map("n", "<leader>tt", function()
-			utils.toggle_term_cmd("glances")
-		end, { desc = "ToggleTerm Glances" })
+		-- select python method / class
+		vim.cmd([[omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>]])
+		vim.cmd([[vnoremap <silent> m :lua require('tsht').nodes()<CR>]])
 
-		-- toggle ipython in terminal
-		map("n", "<leader>ti", function()
-			utils.toggle_term_cmd("ipython")
-		end, { desc = "ToggleTerm iPython" })
+		-- hop
+		vim.cmd([[ hi HopNextKey cterm=bold ctermfg=198 gui=bold guifg=#ff007c]])
+		vim.cmd([[ hi HopNextKey1 cterm=bold ctermfg=198 gui=bold guifg=#ff007c]])
+		vim.cmd([[ hi HopNextKey2 cterm=bold ctermfg=198 gui=bold guifg=#ff007c]])
+		map("n", "f", "<cmd>HopChar1CurrentLineAC<cr>", { noremap = true })
+		map("n", "t", "<cmd>lua require'hop'.hint_char2()<cr>", { noremap = true })
+		map("v", "f", "<cmd>HopChar1CurrentLineAC<cr>", { noremap = true })
+		map("v", "t", "<cmd>lua require'hop'.hint_char2()<cr>", { noremap = true })
 
 		-- move current line up and down
-		map("n", "<C-k>", "<Cmd>call utils#SwitchLine(line('.'), 'up')<CR>", { desc = "Switch line up" })
-		map("n", "<C-j>", "<Cmd>call utils#SwitchLine(line('.'), 'down')<CR>", { desc = "Switch line down" })
-		map("x", "<C-k>", "<Cmd>call utils#SwitchLine(line('.'), 'up')<CR>", { desc = "Switch line up" })
-		map("x", "<C-j>", "<Cmd>call utils#SwitchLine(line('.'), 'down')<CR>", { desc = "Switch line down" })
+		map("n", "<C-k>", ":m .-2<CR>==", { desc = "Switch line up" })
+		map("n", "<C-j>", ":m .+1<CR>==", { desc = "Switch line down" })
+		map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { desc = "Switch line up" })
+		map("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { desc = "Switch line down" })
+		map("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Switch line up" })
+		map("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Switch line down" })
+
+		-- map("x", "<C-k>", "<Cmd>call utils#SwitchLine(line('.'), 'up')<CR>", { desc = "Switch line up" })
+		-- map("x", "<C-j>", "<Cmd>call utils#SwitchLine(line('.'), 'down')<CR>", { desc = "Switch line down" })
 
 		-- tmux navigation
 		map("n", "<A-h>", function()
@@ -111,48 +117,13 @@ return {
 		-- map("t", "<c-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal below window" })
 		-- map("t", "<c-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal above window" })
 		-- map("t", "<c-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window" })
+
 		-- cmp lsp auto complete
 		map("i", "<c-x><c-o>", function()
 			require("cmp").complete({ config = { sources = { { name = "nvim_lsp" } } } })
 		end, { desc = "Complete LSP" })
+
 		map("", "<c-e><c-e>", "<Plug>SendLine", { desc = "Send line to REPL" })
 		map("", "<c-e>", "<Plug>Send", { desc = "Send to REPL" })
-
-		map("x", "J", function()
-			require("syntax-tree-surfer").surf("next", "visual")
-		end, { desc = "Surf next tree-sitter object" })
-		map("x", "K", function()
-			require("syntax-tree-surfer").surf("prev", "visual")
-		end, { desc = "Surf previous tree-sitter object" })
-		map("x", "H", function()
-			require("syntax-tree-surfer").surf("parent", "visual")
-		end, { desc = "Surf parent tree-sitter object" })
-		map("x", "L", function()
-			require("syntax-tree-surfer").surf("child", "visual")
-		end, { desc = "Surf child tree-sitter object" })
-		map("x", "<c-j>", function()
-			require("syntax-tree-surfer").surf("next", "visual", true)
-		end, { desc = "Surf next tree-sitter object" })
-		map("x", "<c-l>", function()
-			require("syntax-tree-surfer").surf("next", "visual", true)
-		end, { desc = "Surf next tree-sitter object" })
-		map("x", "<c-k>", function()
-			require("syntax-tree-surfer").surf("prev", "visual", true)
-		end, { desc = "Surf previous tree-sitter object" })
-		map("x", "<c-h>", function()
-			require("syntax-tree-surfer").surf("prev", "visual", true)
-		end, { desc = "Surf previous tree-sitter object" })
-		map("n", "<c-down>", function()
-			require("syntax-tree-surfer").move("n", false)
-		end, { desc = "Swap next tree-sitter object" })
-		map("n", "<c-right>", function()
-			require("syntax-tree-surfer").move("n", false)
-		end, { desc = "Swap next tree-sitter object" })
-		map("n", "<c-up>", function()
-			require("syntax-tree-surfer").move("n", true)
-		end, { desc = "Swap previous tree-sitter object" })
-		map("n", "<c-left>", function()
-			require("syntax-tree-surfer").move("n", true)
-		end, { desc = "Swap previous tree-sitter object" })
 	end,
 }
