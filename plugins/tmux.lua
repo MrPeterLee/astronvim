@@ -5,7 +5,7 @@ return function()
 		copy_sync = {
 			-- enables copy sync and overwrites all register actions to
 			-- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
-			enable = true,
+			enable = false,
 
 			-- TMUX >= 3.2: yanks (and deletes) will get redirected to system
 			-- clipboard by tmux

@@ -107,9 +107,9 @@ return {
 		map("o", "il", ":normal vil<cr>", { desc = "Inside line text object" })
 		map("x", "al", "$o^", { desc = "Around line text object" })
 		map("o", "al", ":normal val<cr>", { desc = "Around line text object" })
-		-- type template string
-		map("i", ";mk", "<++>", { desc = "Insert template string" })
+
 		map("i", "<S-Tab>", "<C-V><Tab>", { desc = "Tab character" })
+
 		-- terminal mappings
 		map("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
 		map("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quite" })
@@ -117,6 +117,61 @@ return {
 		-- map("t", "<c-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal below window" })
 		-- map("t", "<c-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal above window" })
 		-- map("t", "<c-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window" })
+		-- Buffer switching
+		map(
+			"n",
+			"<leader>1",
+			"<Cmd>BufferLineGoToBuffer 1<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>2",
+			"<Cmd>BufferLineGoToBuffer 2<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>3",
+			"<Cmd>BufferLineGoToBuffer 3<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>4",
+			"<Cmd>BufferLineGoToBuffer 4<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>5",
+			"<Cmd>BufferLineGoToBuffer 5<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>6",
+			"<Cmd>BufferLineGoToBuffer 6<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>7",
+			"<Cmd>BufferLineGoToBuffer 7<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>8",
+			"<Cmd>BufferLineGoToBuffer 8<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
+		map(
+			"n",
+			"<leader>9",
+			"<Cmd>BufferLineGoToBuffer 9<CR>",
+			{ desc = "Swtch to buffer 1", noremap = true, silent = true }
+		)
 
 		-- cmp lsp auto complete
 		map("i", "<c-x><c-o>", function()

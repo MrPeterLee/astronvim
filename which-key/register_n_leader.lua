@@ -31,7 +31,7 @@ end
 -- Normal Mode <leader> Mappings
 local Nmappings = {
 	["<cr>"] = { "<Plug>VimwikiIndex", "Open Notes" },
-	["<space>"] = { "<cmd>Telescope buffers<CR>", "Switch Buffer" },
+	["<space>"] = { "<cmd>Telescope buffers<CR>", "Buffer List" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Bye Buffer" },
 	["C"] = { "<cmd>bdelete!<cr>", "Close Buffer" },
 	["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
@@ -145,73 +145,25 @@ local Nmappings = {
 		},
 	},
 
+	-- vim.api.nvim_feedkeys(copilot_keys, "i", true)
 	s = {
 		name = "Switch Board",
-
-		["<cr>"] = {
-			function()
-				require("harpoon.ui").toggle_quick_menu()
-			end,
-			"View Marks",
-		},
-
-		a = {
-			function()
-				require("harpoon.mark").add_file()
-			end,
-			"Add File Mark",
-		},
-
+		["<cr>"] = { "<cmd>BufferLineTogglePin<cr>", "Set Buffer Pin" },
+		["w"] = { "<cmd>lua require('nvim-window').pick()<CR>", "Switch Window" },
+		["s"] = { "<cmd>BufferLineTogglePin<cr>", "Set Buffer Pin" },
+		["n"] = { '<cmd>vsplit | lua vim.api.nvim_feedkeys("<c-w>ge", "n", true)<cr>', "New GUI Window" },
+		["l"] = { "<cmd>BufferLineCloseRight<cr>", "Close Buffers (Right)" },
+		["h"] = { "<cmd>BufferLineCloseLeft<cr>", "Close Buffers (Left)" },
+		["p"] = { "<cmd>BufferLinePick<cr>", "Pick Buffer" },
+		["x"] = { "<cmd>BufferLinePickClose<cr>", "Pick Close Buffer" },
+		["t"] = { "<cmd>BufferLineSortByTabs<cr>", "Buffers sort by tabs" },
+		["d"] = { "<cmd>BufferLineSortByDirectory<cr>", "Buffers sort by dir" },
+		["e"] = { "<cmd>BufferLineSortByExtension<cr>", "Buffers sort by ext" },
 		b = { nil },
-
-		h = { nil },
+		c = { nil },
+		k = { nil },
 		m = { nil },
 		r = { nil },
-		c = { nil },
-
-		["j"] = {
-			function()
-				require("harpoon.ui").nav_next()
-			end,
-			"Navigate to File 1",
-		},
-		["k"] = {
-			function()
-				require("harpoon.ui").nav_prev()
-			end,
-			"Navigate to File 2",
-		},
-
-		["1"] = {
-			function()
-				require("harpoon.ui").nav_file(1)
-			end,
-			"Navigate to File 1",
-		},
-		["2"] = {
-			function()
-				require("harpoon.ui").nav_file(2)
-			end,
-			"Navigate to File 2",
-		},
-		["3"] = {
-			function()
-				require("harpoon.ui").nav_file(3)
-			end,
-			"Navigate to File 3",
-		},
-		["4"] = {
-			function()
-				require("harpoon.ui").nav_file(4)
-			end,
-			"Navigate to File 4",
-		},
-		["5"] = {
-			function()
-				require("harpoon.ui").nav_file(5)
-			end,
-			"Navigate to File 5",
-		},
 	},
 
 	n = {
@@ -330,15 +282,6 @@ local Vmappings = {
 
 	-- Github Copilot
 	l = { c = { "<cmd>Copilot<cr>", "Github Copilot" } },
-
-	h = {
-		name = "Hop",
-		c = { "<cmd>HopChar1<cr>", "Character" },
-		C = { "<cmd>HopChar2<cr>", "2 Characters" },
-		l = { "<cmd>HopLine<cr>", "Line" },
-		p = { "<cmd>HopPattern<cr>", "Pattern" },
-		w = { "<cmd>HopWord<cr>", "Word" },
-	},
 
 	n = {
 		name = "Notes",

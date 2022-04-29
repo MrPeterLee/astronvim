@@ -12,3 +12,13 @@ fun LastMod()
   exe "1," .. l .. "g/id: /s/id: .*/id:            Peter Lee (peter.lee@finclab.com)"
 endfun
 
+
+" autocmd GUIEnter * nested FVimCursorSmoothMove v:true
+
+" ks|call GuiInit()|'s
+" fun GuiInit()
+"   if exists('g:fvim_loaded')
+"       FVimCursorSmoothMove v:true
+"       FVimCursorSmoothBlink v:true
+"   endif
+" endfun
