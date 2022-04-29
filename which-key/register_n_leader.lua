@@ -30,12 +30,12 @@ end
 
 -- Normal Mode <leader> Mappings
 local Nmappings = {
+	["<cr>"] = { "<Plug>VimwikiIndex", "Open Notes" },
 	["<space>"] = { "<cmd>Telescope buffers<CR>", "Switch Buffer" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Bye Buffer" },
 	["C"] = { "<cmd>bdelete!<cr>", "Close Buffer" },
 	["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
 	["h"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
-	["<cr>"] = { '<esc>/<++><cr>"_c4l', "Next Template" },
 	["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
 	["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
 	["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
@@ -43,6 +43,8 @@ local Nmappings = {
 	l = {
 		-- Github Copilot
 		c = { "<cmd>Copilot<cr>", "Copilot" },
+		p = { "<cmd>Copilot panel<cr>", "Copilot Panel" },
+		U = { "<cmd>Copilot status<cr>", "Copilot Status" },
 
 		d = {
 			name = "DocString",
@@ -143,82 +145,86 @@ local Nmappings = {
 		},
 	},
 
-	o = {
-		name = "Hop",
-		c = { "<cmd>HopChar1<cr>", "Character" },
-		C = { "<cmd>HopChar2<cr>", "2 Characters" },
-		l = { "<cmd>HopLine<cr>", "Line" },
-		p = { "<cmd>HopPattern<cr>", "Pattern" },
-		w = { "<cmd>HopWord<cr>", "Word" },
-	},
-
 	s = {
 		name = "Switch Board",
+
+		["<cr>"] = {
+			function()
+				require("harpoon.ui").toggle_quick_menu()
+			end,
+			"View Marks",
+		},
+
+		a = {
+			function()
+				require("harpoon.mark").add_file()
+			end,
+			"Add File Mark",
+		},
+
 		b = { nil },
+
 		h = { nil },
 		m = { nil },
 		r = { nil },
-		k = { nil },
 		c = { nil },
+
+		["j"] = {
+			function()
+				require("harpoon.ui").nav_next()
+			end,
+			"Navigate to File 1",
+		},
+		["k"] = {
+			function()
+				require("harpoon.ui").nav_prev()
+			end,
+			"Navigate to File 2",
+		},
+
+		["1"] = {
+			function()
+				require("harpoon.ui").nav_file(1)
+			end,
+			"Navigate to File 1",
+		},
+		["2"] = {
+			function()
+				require("harpoon.ui").nav_file(2)
+			end,
+			"Navigate to File 2",
+		},
+		["3"] = {
+			function()
+				require("harpoon.ui").nav_file(3)
+			end,
+			"Navigate to File 3",
+		},
+		["4"] = {
+			function()
+				require("harpoon.ui").nav_file(4)
+			end,
+			"Navigate to File 4",
+		},
+		["5"] = {
+			function()
+				require("harpoon.ui").nav_file(5)
+			end,
+			"Navigate to File 5",
+		},
 	},
 
 	n = {
 		name = "Notes",
-		b = {
-			function()
-				require("zk.commands")("ZkBacklinks")()
-			end,
-			"Backlink Picker",
-		},
-		d = {
-			function()
-				require("zk.commands")("ZkCd")()
-			end,
-			"Change Directory",
-		},
-		r = {
-			function()
-				require("zk.commands")("ZkIndex")()
-			end,
-			"Refresh Index",
-		},
-		l = {
-			function()
-				require("zk.commands")("ZkLinks")()
-			end,
-			"Link Picker",
-		},
-		s = {
-			function()
-				require("zk.commands").get("ZkNotes")({ sort = { "modified" } })
-			end,
-			"Search",
-		},
-		n = {
-			function()
-				require("zk.commands").get("ZkNew")({ dir = "personal", title = vim.fn.input("Title: ") })
-			end,
-			"New Personal Note",
-		},
-		N = {
-			function()
-				require("zk.commands").get("ZkNew")({ dir = "work", title = vim.fn.input("Title: ") })
-			end,
-			"New Work Note",
-		},
-		t = {
-			function()
-				require("zk.commands").get("ZkTags")()
-			end,
-			"Tags",
-		},
-		i = { "<Plug>(simple-todo-new-list-item)", "Insert Todo" },
-		I = { "<Plug>(simple-todo-new-list-item-start-of-line)", "Convert to Todo" },
-		o = { "<Plug>(simple-todo-below)", "Insert Todo Below" },
-		O = { "<Plug>(simple-todo-above)", "Insert Todo Above" },
-		x = { "<Plug>(simple-todo-mark-as-done)", "Mark Done" },
-		X = { "<Plug>(simple-todo-mark-as-undone)", "Mark Undone" },
-		["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
+		["<cr>"] = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
+		["."] = { "<Plug>VimwikiToggleListItem", "Toggle Todo" },
+
+		y = { "<Plug>VimwikiMakeYesterdayDiaryNote", "Diary (Yesterday)" },
+		t = { "<Plug>VimwikiMakeTomorrowDiaryNote", "Diary (Tomorrow)" },
+
+		i = { "<Plug>VimwikiDiaryIndex", "All Diary" },
+		x = { "<Plug>VimwikiDeleteFile", "Delete File" },
+		r = { "<Plug>VimwikiRenameFile", "Rename File" },
 	},
 
 	x = {
@@ -336,26 +342,11 @@ local Vmappings = {
 
 	n = {
 		name = "Notes",
-		s = { ":'<,'>lua require('zk.commands').get('ZkMatch')()<cr>", "Search" },
-		n = {
-			":'<,'>lua require('zk.commands').get('ZkNewFromTitleSelection')({ dir = 'personal' })<cr>",
-			"New Personal Note From Title",
-		},
-		N = {
-			":'<,'>lua require('zk.commands').get('ZkNewFromTitleSelection')({ dir = 'work' })<cr>",
-			"New Work Note From Title",
-		},
-		W = {
-			":'<,'>lua require('zk.commands').get('ZkNewFromContentSelection')({ dir = 'work', title = vim.fn.input('Title: ') })<cr>",
-			"New Work Note From Content",
-		},
-		C = {
-			":'<,'>lua require('zk.commands').get('ZkNewFromContentSelection')({ dir = 'personal', title = vim.fn.input('Title: ') })<cr>",
-			"New Personal Note From Content",
-		},
-		x = { "<Plug>(simple-todo-mark-as-done)", "Mark Done" },
-		X = { "<Plug>(simple-todo-mark-as-undone)", "Mark Undone" },
-		["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
+		["<cr>"] = { ":VimwikiIndex<cr>", "Notes Index" },
+		i = { ":VimwikiDiaryIndex<cr>", "Diary Index" },
+		n = { ":VimwikiMakeDiaryNote<cr>", "Diary (Today)" },
+		y = { ":VimwikiMakeYesterdayDiaryNote<cr>", "Diary (Yesterday)" },
+		t = { ":VimwikiMakeTomorrowDiaryNote<cr>", "Diary (Tomorrow)" },
 	},
 
 	x = {

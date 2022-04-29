@@ -97,13 +97,6 @@ return function(plugins)
 			config = require("user.plugins.dap"),
 		},
 		{
-			"mickael-menu/zk-nvim",
-			module = { "zk", "zk.commands" },
-			config = function()
-				require("zk").setup(require("user.plugins.zk"))
-			end,
-		},
-		{
 			"mtikekar/nvim-send-to-term",
 			cmd = "SendHere",
 			setup = function()
@@ -169,21 +162,6 @@ return function(plugins)
 			after = "telescope.nvim",
 			config = function()
 				require("telescope").load_extension("project")
-			end,
-		},
-		{
-			"vitalk/vim-simple-todo",
-			keys = {
-				"<Plug>(simple-todo-above)",
-				"<Plug>(simple-todo-below)",
-				"<Plug>(simple-todo-mark-as-done)",
-				"<Plug>(simple-todo-mark-as-undone)",
-				"<Plug>(simple-todo-mark-switch)",
-				"<Plug>(simple-todo-new-list-item)",
-				"<Plug>(simple-todo-new-list-item-start-of-line)",
-			},
-			setup = function()
-				vim.g.simple_todo_map_keys = false
 			end,
 		},
 
@@ -257,6 +235,9 @@ return function(plugins)
 			end,
 			requires = { "stevearc/dressing.nvim" },
 		},
+
+		-- vimwiki:: for managing personal journal && todo
+		{ "vimwiki/vimwiki", branch = "dev" },
 	}
 
 	-- Disabled Default Plugins

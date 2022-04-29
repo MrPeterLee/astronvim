@@ -43,6 +43,11 @@ return function()
 	g.load_black = false
 	g.loaded_matchit = true
 
+	-- copilot
+	g.copilot_no_tab_map = true
+	g.copilot_assume_mapped = true
+	g.copilot_tab_fallback = ""
+
 	-- Auto Commands
 	require("user.autocmds").setup()
 
@@ -53,7 +58,7 @@ return function()
 	require("user.filetype").setup()
 
 	-- Load vimscript
-	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/plugins.vim")
 	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/utils.vim")
 	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/autocmd.vim")
+	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/init_last.vim")
 end

@@ -1,4 +1,3 @@
-
 " ----------========== Table-Mode ==========--------- "
 
 " Create tables on-the-fly by pressing || or __:
@@ -15,3 +14,14 @@ inoreabbrev <expr> <bar><bar>
 inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+" ----------========== Vimwiki ==========--------- "
+" nnoremap <leader>n. :VimwikiToggleListItem<CR>
+nnoremap g. :VimwikiToggleListItem<CR>
+nnoremap gl. :VimwikiRemoveSingleCB<CR>
+nnoremap gL. :VimwikiRemoveCBInList<CR>
+
+" ----------========== Copilot Key Bindings ==========--------- "
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+imap <silent><script><expr> <C-F> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
