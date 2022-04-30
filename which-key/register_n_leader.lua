@@ -30,14 +30,15 @@ end
 
 -- Normal Mode <leader> Mappings
 local Nmappings = {
-	["<cr>"] = { "<Plug>VimwikiIndex", "Open Notes" },
+	["<cr>"] = { "<Plug>VimwikiIndex", "Notebook" },
+	["<tab>"] = { "<Plug>VimwikiDiaryIndex", "Trading Journal" },
 	["<space>"] = { "<cmd>Telescope buffers<CR>", "Buffer List" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Bye Buffer" },
 	["C"] = { "<cmd>bdelete!<cr>", "Close Buffer" },
 	["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
 	["h"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
 	["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
-	["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
+	-- ["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
 	["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
 
 	l = {
@@ -168,7 +169,7 @@ local Nmappings = {
 
 	n = {
 		name = "Notes",
-		["<cr>"] = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
+		["n"] = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
 		["."] = { "<Plug>VimwikiToggleListItem", "Toggle Todo" },
 
 		y = { "<Plug>VimwikiMakeYesterdayDiaryNote", "Diary (Yesterday)" },
@@ -286,7 +287,6 @@ local Vmappings = {
 	n = {
 		name = "Notes",
 		["<cr>"] = { ":VimwikiIndex<cr>", "Notes Index" },
-		i = { ":VimwikiDiaryIndex<cr>", "Diary Index" },
 		n = { ":VimwikiMakeDiaryNote<cr>", "Diary (Today)" },
 		y = { ":VimwikiMakeYesterdayDiaryNote<cr>", "Diary (Yesterday)" },
 		t = { ":VimwikiMakeTomorrowDiaryNote<cr>", "Diary (Tomorrow)" },

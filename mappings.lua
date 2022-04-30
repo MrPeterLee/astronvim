@@ -41,9 +41,6 @@ return {
 		map("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Switch line up" })
 		map("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Switch line down" })
 
-		-- map("x", "<C-k>", "<Cmd>call utils#SwitchLine(line('.'), 'up')<CR>", { desc = "Switch line up" })
-		-- map("x", "<C-j>", "<Cmd>call utils#SwitchLine(line('.'), 'down')<CR>", { desc = "Switch line down" })
-
 		-- tmux navigation
 		map("n", "<A-h>", function()
 			require("tmux").move_left()
