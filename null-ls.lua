@@ -29,11 +29,12 @@ return function()
 				-- builtins.diagnostics.cspell,
 
 				-- zsh - only highlights "parsing error" as a msg
-				builtins.diagnostics.zsh,
+				-- builtins.diagnostics.zsh,
+
 				-- makefile
-				-- builtins.diagnostics.checkmate,
+				builtins.diagnostics.checkmate,
 				-- github workflow
-				builtins.diagnostics.actionlint,
+				-- builtins.diagnostics.actionlint,
 			},
 			on_attach = function(client)
 				if client.resolved_capabilities.document_formatting then
