@@ -232,9 +232,6 @@ return function(plugins)
 
 		-- vimwiki:: for managing personal journal && todo
 		{ "vimwiki/vimwiki", branch = "dev" },
-
-		-- magma-nvim:: jupyter notebook environment in neovim
-		{ "dccsillag/magma-nvim" },
 	}
 
 	-- Disabled Default Plugins
