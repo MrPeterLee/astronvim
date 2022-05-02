@@ -6,14 +6,25 @@ end
 
 return {
 	mapping = {
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-		["<Tab>"] = cmp.mapping(function(fallback)
-			-- cmp.mapping.abort()
+		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-j>"] = cmp.mapping(function(fallback)
+			cmp.mapping.abort()
 			local copilot_keys = vim.fn["copilot#Accept"]()
 			if copilot_keys ~= "" and type(copilot_keys) == "string" then
 				vim.api.nvim_feedkeys(copilot_keys, "i", true)
-			elseif cmp.visible() then
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
+
+		["<Tab>"] = cmp.mapping(function(fallback)
+			-- local copilot_keys = vim.fn["copilot#Accept"]()
+			-- if copilot_keys ~= "" and type(copilot_keys) == "string" then
+			-- vim.api.nvim_feedkeys(copilot_keys, "i", true)
+			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expandable() then
 				luasnip.expand()
@@ -26,6 +37,7 @@ return {
 			"i",
 			"s",
 		}),
+
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()

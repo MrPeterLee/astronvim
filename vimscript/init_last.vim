@@ -22,7 +22,7 @@ nnoremap gl. :VimwikiRemoveSingleCB<CR>
 nnoremap gL. :VimwikiRemoveCBInList<CR>
 
 " ----------========== Copilot Key Bindings ==========--------- "
-let g:copilot_no_tab_map = v:true
+" let g:copilot_no_tab_map = v:true
 " imap <silent><script><expr> <C-f> copilot#Accept("\<CR>")
 
 " ----------========== Other Key Bindings ==========--------- "

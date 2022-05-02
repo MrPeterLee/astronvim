@@ -234,7 +234,7 @@ return function(plugins)
 		{ "vimwiki/vimwiki", branch = "dev" },
 
 		-- magma-nvim:: jupyter notebook environment in neovim
-    -- { "dccsillag/magma-nvim" },
+		{ "dccsillag/magma-nvim" },
 	}
 
 	-- Disabled Default Plugins

@@ -32,7 +32,7 @@ return function()
 				-- builtins.diagnostics.zsh,
 
 				-- makefile
-				builtins.diagnostics.checkmate,
+				-- builtins.diagnostics.checkmate,
 				-- github workflow
 				-- builtins.diagnostics.actionlint,
 			},
