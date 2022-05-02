@@ -27,5 +27,5 @@ nnoremap gL. :VimwikiRemoveCBInList<CR>
 
 " ----------========== Other Key Bindings ==========--------- "
 " Map s -> wincmd
-nnoremap s <C-w>
-vnoremap s <C-w>
+" nnoremap s <C-w>
+" vnoremap s <C-w>

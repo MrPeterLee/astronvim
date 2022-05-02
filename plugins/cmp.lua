@@ -7,7 +7,7 @@ end
 return {
 	mapping = {
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<C-j>"] = cmp.mapping(function(fallback)
+		["<C-f>"] = cmp.mapping(function(fallback)
 			cmp.mapping.abort()
 			local copilot_keys = vim.fn["copilot#Accept"]()
 			if copilot_keys ~= "" and type(copilot_keys) == "string" then

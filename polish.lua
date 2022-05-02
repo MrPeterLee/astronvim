@@ -48,6 +48,18 @@ return function()
 	g.copilot_assume_mapped = true
 	g.copilot_tab_fallback = ""
 
+	-- toggleterm
+	function _G.set_terminal_keymaps()
+		local opts = { noremap = True }
+		vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+		vim.api.nvim_buf_set_keymap(0, "t", "<jk>", [[<C-\><C-n>]], opts)
+		vim.api.nvim_buf_set_keymap(0, "t", "<A-h>", [[<C-\><C-n><C-w>h]], opts)
+		vim.api.nvim_buf_set_keymap(0, "t", "<A-j>", [[<C-\><C-n><C-w>j]], opts)
+		vim.api.nvim_buf_set_keymap(0, "t", "<A-k>", [[<C-\><C-n><C-w>k]], opts)
+		vim.api.nvim_buf_set_keymap(0, "t", "<A-l>", [[<C-\><C-n><C-w>l]], opts)
+	end
+	vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
 	-- Auto Commands
 	require("user.autocmds").setup()
 
