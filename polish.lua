@@ -48,6 +48,31 @@ return function()
 	g.copilot_assume_mapped = true
 	g.copilot_tab_fallback = ""
 
+	-- toggle term on the side
+	local Terminal = require("toggleterm.terminal").Terminal
+	local side_term = Terminal:new({
+		-- cmd = "lazygit",
+		-- dir = "git_dir",
+		direction = "vertical",
+		-- float_opts = {
+		-- border = "double",
+		-- },
+		-- function to run on opening the terminal
+		on_open = function(term)
+			vim.cmd("startinsert!")
+			vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+		end,
+		-- function to run on closing the terminal
+		on_close = function(term)
+			vim.cmd('echo "Closing terminal"')
+		end,
+	})
+	function _side_term_toggle()
+		side_term:toggle()
+	end
+	vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua _side_term_toggle()<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<A-.>", "<cmd>lua _side_term_toggle()<CR>", { noremap = true, silent = true })
+
 	-- Auto Commands
 	require("user.autocmds").setup()
 

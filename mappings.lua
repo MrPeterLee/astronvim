@@ -96,10 +96,6 @@ return {
 		-- terminal mappings
 		map("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
 		map("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quite" })
-		-- map("t", "<c-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window" })
-		-- map("t", "<c-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal below window" })
-		-- map("t", "<c-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal above window" })
-		-- map("t", "<c-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window" })
 		-- Buffer switching
 		map(
 			"n",
