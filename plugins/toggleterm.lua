@@ -1,3 +1,3 @@
 return {
-	terminal_mappings = true,
+	terminal_mappings = false, -- ensure that the window switch hotkeys (<A-h>) works.
 }

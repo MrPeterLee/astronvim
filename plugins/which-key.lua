@@ -1,5 +1,11 @@
 return {
-  window = {
-    border = "none",
-  },
+	window = {
+		border = "none",
+	},
+	plugins = {
+		registers = false,
+		presets = {
+			windows = false,
+		},
+	},
 }
