@@ -12,6 +12,7 @@ All credits goes to original Author: [Mehalter][https://git.mehalter.com/mehalte
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ```
 
+
 2. Install these user settings
 
 ```sh
