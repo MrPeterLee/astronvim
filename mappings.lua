@@ -50,7 +50,7 @@ return {
 		end, { desc = "Tmux navigate right" })
 		map("n", "<A-j>", function()
 			require("tmux").move_bottom()
-		end, { desc = "Tmux navigate buttom" })
+		end, { desc = "Tmux navigate bottom" })
 		map("n", "<A-k>", function()
 			require("tmux").move_top()
 		end, { desc = "Tmux navigate up" })
@@ -63,31 +63,17 @@ return {
 		end, { desc = "Tmux resize right" })
 		map("n", "<A-J>", function()
 			require("tmux").resize_bottom()
-		end, { desc = "Tmux resize buttom" })
+		end, { desc = "Tmux resize bottom" })
 		map("n", "<A-K>", function()
 			require("tmux").resize_top()
 		end, { desc = "Tmux resize up" })
 
-		-- swap `;` with `:`
-		map("n", ";", ":", { desc = "Swap `;` with `:`" })
-		map("n", ":", ";", { desc = "Swap `;` with `:`" })
-		map("v", ";", ":", { desc = "Swap `;` with `:`" })
-		map("v", ":", ";", { desc = "Swap `;` with `:`" })
-
-		-- [deprecated in favour of tmux integration] resize with arrows
-		-- map("n", "<Up>", function()
-		-- 	require("smart-splits").resize_up(2)
-		-- end, { desc = "Resize split up" })
-		-- map("n", "<Down>", function()
-		-- 	require("smart-splits").resize_down(2)
-		-- end, { desc = "Resize split down" })
-		-- map("n", "<Left>", function()
-		-- 	require("smart-splits").resize_left(2)
-		-- end, { desc = "Resize split left" })
-		-- map("n", "<Right>", function()
-		-- 	require("smart-splits").resize_right(2)
-		-- end, { desc = "Resize split right" })
-
+		-- - swap `;` with `:` - causing conflict with telescope
+		-- map("n", ";", ":", { desc = "Swap `;` with `:`" })
+		-- map("n", ":", ";", { desc = "Swap `;` with `:`" })
+		-- map("v", ";", ":", { desc = "Swap `;` with `:`" })
+		-- map("v", ":", ";", { desc = "Swap `;` with `:`" })
+		--
 		-- navigating wrapped lines
 		map({ "n", "v" }, "j", "gj", { desc = "Nagivate down" })
 		map({ "n", "v" }, "k", "gk", { desc = "Navigate up" })
