@@ -1,8 +1,8 @@
 return {
 	setup = function()
-		--local unmap = vim.keymap.del
 		local map = vim.keymap.set
 
+		-- local unmap = vim.keymap.del
 		-- remove key-bindings
 		--unmap("n", "<A-j>")
 		--unmap("n", "<A-k>")
@@ -19,6 +19,7 @@ return {
 		--unmap("v", ">")
 		--unmap("v", "J")
 		--unmap("v", "K")
+		--unmap("n", "<A-j>")
 
 		-- select python method / class
 		vim.cmd([[omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>]])

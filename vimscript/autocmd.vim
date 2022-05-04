@@ -1,5 +1,7 @@
+" Auto create python file skeleton
 autocmd BufNewFile  *.py	0r ~/.config/nvim/skeleton/skeleton.py
 
+" Auto update the last-update time
 autocmd BufWritePre,FileWritePre *.py   ks|call UpdatePythonHeader()|'s
 fun UpdatePythonHeader()
   if line("$") > 20

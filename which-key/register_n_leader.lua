@@ -169,7 +169,7 @@ local Nmappings = {
 
 	n = {
 		name = "Notes",
-		["n"] = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
+		["<cr>"] = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
 		["."] = { "<Plug>VimwikiToggleListItem", "Toggle Todo" },
 
 		y = { "<Plug>VimwikiMakeYesterdayDiaryNote", "Diary (Yesterday)" },

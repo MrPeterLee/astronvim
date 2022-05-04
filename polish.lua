@@ -4,7 +4,7 @@ return function()
 
 	-- Options
 	-- enable spelling check
-	set.spell = true
+	set.spell = false
 	set.spelllang = { "en_us" }
 	--  After adding a word to 'spellfile' with the above commands its associated
 	--  '.spl' file will automatically be updated and reloaded. If you change
@@ -81,6 +81,9 @@ return function()
 
 	-- Filetypes
 	require("user.filetype").setup()
+
+	-- Colorscheme highlighting groups
+	require("user.plugins.color_scheme")
 
 	-- Load vimscript
 	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/utils.vim")

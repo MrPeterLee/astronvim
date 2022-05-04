@@ -15,17 +15,32 @@ inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
+
 " ----------========== Vimwiki ==========--------- "
 " nnoremap <leader>n. :VimwikiToggleListItem<CR>
 nnoremap g. :VimwikiToggleListItem<CR>
 nnoremap gl. :VimwikiRemoveSingleCB<CR>
 nnoremap gL. :VimwikiRemoveCBInList<CR>
 
-" ----------========== Copilot Key Bindings ==========--------- "
-" let g:copilot_no_tab_map = v:true
-" imap <silent><script><expr> <C-f> copilot#Accept("\<CR>")
 
 " ----------========== Other Key Bindings ==========--------- "
 " Map s -> wincmd
 " nnoremap s <C-w>
 " vnoremap s <C-w>
+
+
+" ----------========== function GetSyntax:: Show highlight info for cursor ==========--------- "
+function! GetSyntaxID()
+    return synID(line('.'), col('.'), 1)
+endfunction
+
+function! GetSyntaxParentID()
+    return synIDtrans(GetSyntaxID())
+endfunction
+
+function! GetSyntax()
+    echo synIDattr(GetSyntaxID(), 'name')
+    exec "hi ".synIDattr(GetSyntaxParentID(), 'name')
+endfunction
+
+
