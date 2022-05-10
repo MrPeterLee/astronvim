@@ -15,6 +15,10 @@ fun UpdatePythonHeader()
 endfun
 
 autocmd FileType markdown setlocal spell
+" Disable cmp auto-complete for markdown
+autocmd FileType markdown lua require'cmp'.setup.buffer {
+\   completion = { autocomplete = false }
+\ }
 
 " autocmd GUIEnter * nested FVimCursorSmoothMove v:true
 

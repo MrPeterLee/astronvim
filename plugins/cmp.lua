@@ -1,11 +1,9 @@
 local cmp_ok, cmp = pcall(require, "cmp")
 local luasnip_ok, luasnip = pcall(require, "luasnip")
 if not cmp_ok or not luasnip_ok then
-	print("Shit, CMP is not loaded!!!!")
+	print("Damn, CMP is not loaded!!!!")
 	return {}
 end
-
-print("CMP - gonna return a table")
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype("python", {
@@ -27,15 +25,20 @@ return {
 		{ name = "pyright" },
 	},
 	window = {
-		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+		completion = { -- rounded border; thin-style scrollbar
+			border = "rounded",
+			scrollbar = "║",
+		},
+		documentation = { -- no border; native-style scrollbar
+			border = nil,
+			scrollbar = "",
+			-- other options
 		},
 	},
 
 	-- Key mappings
 	mapping = {
-		-- ["<C-e>"] = cmp.mapping.abort(),
+		["<C-e>"] = cmp.mapping.abort(),
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),

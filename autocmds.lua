@@ -5,18 +5,6 @@ return {
 		local augroup = vim.api.nvim_create_augroup
 		local del_augroup = vim.api.nvim_del_augroup_by_name
 
-		-- del_augroup("TermMappings")
-
-		-- Markdown:: Disable cmp autocomplete
-		augroup("markdown", {})
-		cmd("FileType", {
-			desc = "disable cmp autocomplete for markdown files",
-			group = "markdown",
-			callback = function()
-				require("cmp").setup.buffer({ enabled = false })
-			end,
-		})
-
 		-- dapui
 		augroup("dapui", {})
 		cmd("FileType", {
