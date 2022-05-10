@@ -28,6 +28,10 @@ local config = {
       -- end
     -- end,
 
+
+
+
+
     -- override the lsp installer server-registration function
     -- server_registration = function(server, opts)
     --   require("lspconfig")[server.name].setup(opts)
