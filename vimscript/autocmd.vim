@@ -26,7 +26,7 @@ augroup formatting
   " autocmd FileType html setlocal formatprg=prettier\ --parser\ html
   " autocmd FileType json setlocal formatprg=prettier\ --parser\ json
 augroup END
-autocmd BufWritePre *.md call feedkeys("mxgggqG'x", "n")
+" autocmd BufWritePre *.md call feedkeys("mxgggqG'x", "n")
 
 " autocmd GUIEnter * nested FVimCursorSmoothMove v:true
 

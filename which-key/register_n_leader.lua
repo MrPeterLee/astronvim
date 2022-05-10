@@ -138,6 +138,7 @@ local Nmappings = {
 		w = { vim_opt_toggle("wrap", true, false, "Soft Wrap"), "Toggle Soft Wrapping" },
 		W = { vim_opt_toggle("textwidth", 80, 0, "Hard Wrap"), "Toggle Hard Wrapping" },
 		m = { "<cmd>Glow<cr>", "Preview Markdown" },
+		f = { '<cmd>call feedkeys("mxgggqG\'x", "n")<cr>', "Format Markdown" },
 		e = {
 			function()
 				require("nabla").popup()
