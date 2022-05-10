@@ -233,14 +233,15 @@ return function(plugins)
 
 	-- Disabled Default Plugins
 	plugins["glepnir/dashboard-nvim"] = nil
+	plugins["declancm/cinnamon.nvim"] = { disabled = true }
+
 	-- plugins["max397574/better-escape.nvim"] = nil
-	plugins["karb94/neoscroll.nvim"] = nil
 	-- plugins["lukas-reineke/indent-blankline.nvim"] = nil
 	-- plugins["numToStr/Comment.nvim"] = nil
 
 	-- Disabled Default Lazy Loading
-	plugins["nvim-neo-tree/neo-tree.nvim"].cmd = nil
-	plugins["nvim-neo-tree/neo-tree.nvim"].module = nil
+	-- plugins["nvim-neo-tree/neo-tree.nvim"].cmd = nil
+	-- plugins["nvim-neo-tree/neo-tree.nvim"].module = nil
 
 	return vim.tbl_deep_extend("force", plugins, my_plugins)
 end

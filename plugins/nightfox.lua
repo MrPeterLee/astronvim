@@ -1,4 +1,14 @@
 return {
+	-- palettes = {
+	-- 	-- Custom duskfox with black background
+	-- 	duskfox = {
+	-- 		bg1 = "#000000", -- Black background
+	-- 		bg0 = "#1d1d2b", -- Alt backgrounds (floats, statusline, ...)
+	-- 		bg3 = "#121820", -- 55% darkened from stock
+	-- 		sel0 = "#131b24", -- 55% darkened from stock
+	-- 	},
+	-- },
+
 	options = {
 		dim_inactive = true,
 		transparent = true, -- transparent background
@@ -25,13 +35,13 @@ return {
 			sneak = false,
 		},
 	},
-	-- groups = {
-	-- 	all = {
-	-- 		MiniIndentscopeSymbol = { link = "PreProc" },
-	-- 		NormalFloat = { link = "Normal" },
-	-- 		TelescopeBorder = { bg = "bg1" },
-	-- 		TelescopePromptCounter = { link = "TelescopePromptNormal" },
-	-- 		TelescopePromptPrefix = { link = "TelescopePromptNormal" },
-	-- 	},
-	-- },
+	groups = {
+		all = {
+			MiniIndentscopeSymbol = { link = "PreProc" },
+			NormalFloat = { link = "Normal" },
+			TelescopeBorder = { bg = "bg1" },
+			TelescopePromptCounter = { link = "TelescopePromptNormal" },
+			TelescopePromptPrefix = { link = "TelescopePromptNormal" },
+		},
+	},
 }

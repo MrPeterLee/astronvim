@@ -47,6 +47,7 @@ return function()
 	g.copilot_no_tab_map = true
 	g.copilot_assume_mapped = true
 	g.copilot_tab_fallback = ""
+	vim.api.nvim_set_keymap("i", "<C-f>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 	-- toggle term on the side
 	local Terminal = require("toggleterm.terminal").Terminal

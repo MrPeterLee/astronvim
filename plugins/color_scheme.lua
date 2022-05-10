@@ -271,13 +271,15 @@ function lvim.colorscheme()
 	-- vim.o.background = "dark"
 	-- vim.o.termguicolors = true
 	-- vim.g.colors_name = "lvim"
-	local syntax = lvim.load_syntax()
+	-- local syntax = lvim.load_syntax()
 	-- for group, colors in pairs(syntax) do
-	-- 	lvim.highlight(group, colors)
+	-- lvim.highlight(group, colors)
 	-- end
+
+	-- Get rid  of an error message where no background highlight color is set for Normal group
+	-- vim.api.nvim_command("highlight " .. "Normal" .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp)
+
 	async_load_plugin:send()
 end
 
 lvim.colorscheme()
-
-return lvim
