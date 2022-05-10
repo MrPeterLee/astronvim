@@ -5,7 +5,7 @@ return {
 		local augroup = vim.api.nvim_create_augroup
 		local del_augroup = vim.api.nvim_del_augroup_by_name
 
-		del_augroup("TermMappings")
+		-- del_augroup("TermMappings")
 
 		-- Markdown:: Disable cmp autocomplete
 		augroup("markdown", {})
