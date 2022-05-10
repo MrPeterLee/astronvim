@@ -2,7 +2,7 @@
 let g:vimwiki_list = [{'path': '~/ts/journal/',
                      \ 'name': 'Trading Journal', 
                      \ 'syntax': 'markdown', 'ext': '.md',
-                     \ 'auto_toc': 0,
+                     \ 'auto_toc': 1,
                      \ 'auto_tags': 1,
                      \ 'auto_diary_index': 1,
                      \ 'auto_generate_links': 1,
@@ -54,10 +54,12 @@ let g:vimwiki_key_mappings =
   \   'global': 0,
   \   'headers': 1,
   \   'text_objs': 1,
-  \   'table_format': 0,
-  \   'table_mappings': 0,
+  \   'table_format': 1,
+  \   'table_mappings': 1,
   \   'lists': 1,
   \   'links': 1,
   \   'html': 0,
   \   'mouse': 0,
   \ }
+
+let g:vimwiki_toc_header = "Contents"

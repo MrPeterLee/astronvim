@@ -43,4 +43,50 @@ function! GetSyntax()
     exec "hi ".synIDattr(GetSyntaxParentID(), 'name')
 endfunction
 
+" ----------========== CSV.vim  ==========--------- "
+let b:csv_arrange_align = 'lc.'
+let b:csv_arrange_use_all_rows = 1
+let g:csv_autocmd_arrange = 1
+let g:csv_autocmd_arrange_size = 1024*1024*100  " autoformat up to 100MB
+let g:no_plugin_maps = 1  " Disable all keymaps
+
+
+" ----------========== Make Vimwiki able to open csv files outside-of-vimwiki folder  ==========--------- "
+"
+function! VimwikiLinkHandler(link)
+  " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
+  "   1) [[vfile:~/Code/PythonProject/abc123.py]]
+  "   2) [[vfile:./|Wiki Home]]
+  let link = a:link
+  if link =~# '^vfile:'
+    let link = link[1:]
+  else
+    return 0
+  endif
+  let link_infos = vimwiki#base#resolve_link(link)
+  if link_infos.filename == ''
+    echomsg 'Vimwiki Error: Unable to resolve link!'
+    return 0
+  else
+    " Choice of 3 methods --> prefer the csv.vim as it is native inside nvim
+
+    " Method 1:: Use csv.vim to edit the csv file
+    exe 'e' fnameescape(link_infos.filename)
+    " select all lines and format the columns
+    " exe '<,'>ArrangeColumn
+
+    " Method 2:: Use VisiData to open csv files
+    " let g:vimwiki_link_path = fnameescape(link_infos.filename)
+    " echo "vd " . g:vimwiki_link_path
+    " lua require("core.utils").toggle_term_cmd ({ cmd = "vd " .. vim.g.vimwiki_link_path, direction = "tab", })
+
+    " Method 3:: Use sc-im to open csv files
+    " let g:vimwiki_link_path = fnameescape(link_infos.filename)
+    " echo "sc-im " . g:vimwiki_link_path
+    " lua require("core.utils").toggle_term_cmd ({ cmd = "sc-im " .. vim.g.vimwiki_link_path, direction = "tab", insert_mappings=false, terminal_mappings=false, close_on_exit=true})
+
+    return 1
+  endif
+endfunction
+
 

@@ -226,6 +226,9 @@ return function(plugins)
 
 		-- vimwiki:: for managing personal journal && todo
 		{ "vimwiki/vimwiki", branch = "dev" },
+
+		-- csv.vim:: Open csv files
+		{ "chrisbra/csv.vim" },
 	}
 
 	-- Disabled Default Plugins

@@ -7,6 +7,17 @@ return {
 
 		del_augroup("TermMappings")
 
+		-- Markdown:: Disable cmp autocomplete
+		augroup("markdown", {})
+		cmd("FileType", {
+			desc = "disable cmp autocomplete for markdown files",
+			group = "markdown",
+			callback = function()
+				require("cmp").setup.buffer({ enabled = false })
+			end,
+		})
+
+		-- dapui
 		augroup("dapui", {})
 		cmd("FileType", {
 			desc = "Make q close dap floating windows",
@@ -16,6 +27,7 @@ return {
 				map("n", "q", "<cmd>close!<cr>")
 			end,
 		})
+
 		-- ToggleTerm
 		function _G.set_terminal_keymaps()
 			vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], { desc = "Terminal normal mode" })

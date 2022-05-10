@@ -30,8 +30,8 @@ end
 
 -- Normal Mode <leader> Mappings
 local Nmappings = {
-	["<cr>"] = { "<Plug>VimwikiIndex", "Notebook" },
-	["<tab>"] = { "<Plug>VimwikiDiaryIndex", "Trading Journal" },
+	["<cr>"] = { "<Plug>VimwikiDiaryIndex", "Trading Journal" },
+	["<tab>"] = { "<Plug>VimwikiIndex", "Notebook" },
 	["<space>"] = { "<cmd>Telescope buffers<CR>", "Buffer List" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Bye Buffer" },
 	["C"] = { "<cmd>bdelete!<cr>", "Close Buffer" },
@@ -170,14 +170,17 @@ local Nmappings = {
 	n = {
 		name = "Notes",
 		["<cr>"] = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
-		["."] = { "<Plug>VimwikiToggleListItem", "Toggle Todo" },
-
+		n = { "<Plug>VimwikiMakeDiaryNote", "Diary (Today)" },
 		y = { "<Plug>VimwikiMakeYesterdayDiaryNote", "Diary (Yesterday)" },
-		t = { "<Plug>VimwikiMakeTomorrowDiaryNote", "Diary (Tomorrow)" },
-
-		i = { "<Plug>VimwikiDiaryIndex", "All Diary" },
-		x = { "<Plug>VimwikiDeleteFile", "Delete File" },
+		e = { "<Plug>VimwikiTOC", "Table of Contents" },
+		c = { "<Plug>VimwikiColorize", "Colorize" },
 		r = { "<Plug>VimwikiRenameFile", "Rename File" },
+		d = { "<Plug>VimwikiDeleteFile", "Delete File" },
+		w = { "<Plug>VimwikiMakeTomorrowDiaryNote", "Diary (Tomorrow)" },
+		i = { "<Plug>VimwikiDiaryIndex", "All Journal" },
+		x = { "<Plug>VimwikiRemoveDone", "Remove [x]" },
+		t = { "<Plug>VimwikiNextTask", "Next checkbox" },
+		s = { "<CMD>call GetSyntax()<CR>", "Show highlight group" },
 	},
 
 	x = {
@@ -280,6 +283,10 @@ local Dmappings = {
 
 local Vmappings = {
 	["/"] = { "Comment" },
+	["<cr>"] = { "<Plug>VimwikiDiaryIndex", "Trading Journal" },
+	["<tab>"] = { "<Plug>VimwikiIndex", "Notebook" },
+	["<space>"] = { "<cmd>Telescope buffers<CR>", "Buffer List" },
+	[","] = { "<Plug>VimwikiToggleListItem", "Toggle Todo" },
 
 	-- Github Copilot
 	l = { c = { "<cmd>Copilot<cr>", "Github Copilot" } },

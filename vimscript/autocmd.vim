@@ -14,6 +14,7 @@ fun UpdatePythonHeader()
   " exe "1," .. l .. "g/id: /s/id: .*/id:            Peter Lee (peter.lee@finclab.com)"
 endfun
 
+autocmd FileType markdown setlocal spell
 
 " autocmd GUIEnter * nested FVimCursorSmoothMove v:true
 

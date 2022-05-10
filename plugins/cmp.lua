@@ -5,8 +5,12 @@ if not cmp_ok or not luasnip_ok then
 end
 
 return {
+
+	-- Key mappings
 	mapping = {
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+		-- Use <C-f> to complete copilot
 		["<C-f>"] = cmp.mapping(function(fallback)
 			cmp.mapping.abort()
 			local copilot_keys = vim.fn["copilot#Accept"]()
