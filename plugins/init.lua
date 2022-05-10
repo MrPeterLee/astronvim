@@ -229,6 +229,10 @@ return function(plugins)
 
 		-- csv.vim:: Open csv files
 		{ "chrisbra/csv.vim" },
+
+		-- As markdown LSP server (zk cannot be compiled), I cannot use the preferred lsp way of formatting markdown.
+		-- PERF: Use a plugin and autocmd to auto format markdown on save.
+		{ "sbdchd/neoformat" },
 	}
 
 	-- Disabled Default Plugins
