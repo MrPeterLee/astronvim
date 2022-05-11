@@ -11,12 +11,6 @@ return function(plugins)
 				require("user.plugins.tmux")()
 			end,
 		},
-		{
-			"EdenEast/nightfox.nvim",
-			config = function()
-				require("nightfox").setup(require("user.plugins.nightfox"))
-			end,
-		},
 		{ "andymass/vim-matchup", event = { "BufRead", "BufNewFile" } },
 		{
 			"danymat/neogen",
