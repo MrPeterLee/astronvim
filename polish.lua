@@ -74,6 +74,17 @@ return function()
 	vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua _side_term_toggle()<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<A-.>", "<cmd>lua _side_term_toggle()<CR>", { noremap = true, silent = true })
 
+	-- indent blankline
+	vim.g.indent_blankline_filetype_exclude = {
+		"lspinfo",
+		"packer",
+		"checkhealth",
+		"help",
+		"man",
+		"markdown",
+		"vimwiki",
+	}
+
 	-- Auto Commands
 	require("user.autocmds").setup()
 
@@ -82,9 +93,6 @@ return function()
 
 	-- Filetypes
 	require("user.filetype").setup()
-
-	-- Colorscheme highlighting groups
-	require("user.plugins.color_scheme")
 
 	-- Load vimscript
 	vim.cmd("source " .. vim.fn.expand("$HOME") .. "/.config/nvim/lua/user/vimscript/utils.vim")

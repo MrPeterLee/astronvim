@@ -43,19 +43,19 @@ return {
 
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
-		-- -- Use <C-f> to complete copilot
-		-- ["<C-f>"] = cmp.mapping(function(fallback)
-		-- 	cmp.mapping.abort()
-		-- 	local copilot_keys = vim.fn["copilot#Accept"]()
-		-- 	if copilot_keys ~= "" and type(copilot_keys) == "string" then
-		-- 		vim.api.nvim_feedkeys(copilot_keys, "i", true)
-		-- 	else
-		-- 		fallback()
-		-- 	end
-		-- end, {
-		-- 	"i",
-		-- 	"s",
-		-- }),
+		-- Use <C-f> to complete copilot
+		["<C-f>"] = cmp.mapping(function(fallback)
+			cmp.mapping.abort()
+			local copilot_keys = vim.fn["copilot#Accept"]()
+			if copilot_keys ~= "" and type(copilot_keys) == "string" then
+				vim.api.nvim_feedkeys(copilot_keys, "i", true)
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			-- local copilot_keys = vim.fn["copilot#Accept"]()
