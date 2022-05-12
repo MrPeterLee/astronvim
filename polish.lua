@@ -43,6 +43,9 @@ return function()
 	g.load_black = false
 	g.loaded_matchit = true
 
+	-- set tab=4 spaces for python
+	g.python_recommended_style = true
+
 	-- copilot
 	g.copilot_no_tab_map = true
 	g.copilot_assume_mapped = true
@@ -83,6 +86,7 @@ return function()
 		"man",
 		"markdown",
 		"vimwiki",
+		"csv",
 	}
 
 	-- Auto Commands

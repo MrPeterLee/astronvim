@@ -20,6 +20,7 @@ return function(h)
 	h.SpellBad = { fg = C.fg, style = "undercurl" }
 	h.SpellCap = { fg = C.fg, bg = C.grey_3, style = "undercurl" }
 	h.SpellLocal = { fg = C.fg }
+
 	h.VimwikiHeader1 = { fg = C.orange_2, style = "bold" }
 	h.VimwikiHeader2 = { fg = C.orange_1, style = "bold" }
 	h.VimwikiHeader3 = { fg = C.orange }
@@ -29,6 +30,7 @@ return function(h)
 	h.VimwikiHeaderChar = { fg = C.yellow }
 	h.VimwikiList = { fg = C.yellow }
 	h.VimwikiItalic = { bg = C.grey_3, fg = C.purple }
+	h.VimwikiCode = { fg = C.cyan }
 	h.VimwikiBold = { bg = C.grey_3, fg = C.gold }
 	h.Vimwikigrey = { fg = C.grey }
 	h.Vimwikigreen = { fg = C.green }
@@ -39,11 +41,11 @@ return function(h)
 	h.VimwikiLink = { fg = C.blue, style = "underline" }
 	h.VimwikiHR = { fg = C.c }
 	h.VimwikiTag = { fg = C.cyan }
-	h.RatingOW = { bg = C.toml, fg = C.white, style = "bold" }
-	h.RatingOWTactical = { bg = C.toml, fg = C.white, style = "bold" }
-	h.RatingN = { bg = C.orange_2, fg = C.white, style = "bold" }
-	h.RatingUW = { bg = C.red_1, fg = C.white, style = "bold" }
-	h.RatingUWTactical = { bg = C.red_1, fg = C.white, style = "bold" }
+	h.RatingOW = { bg = C.toml, fg = C.white }
+	h.RatingOWTactical = { bg = C.toml, fg = C.white }
+	h.RatingN = { bg = C.orange_2, fg = C.white }
+	h.RatingUW = { bg = C.red_1, fg = C.white }
+	h.RatingUWTactical = { bg = C.red_1, fg = C.white }
 
 	return h
 end
