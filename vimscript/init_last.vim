@@ -93,7 +93,7 @@ endfunction
 " ----------========== Markdown-Preview  ==========--------- "
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 0
+let g:mkdp_auto_start = 1
 
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer
@@ -120,7 +120,7 @@ let g:mkdp_open_to_the_world = 1
 " useful when you work in remote vim and preview on local browser
 " more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
 " default empty
-let g:mkdp_open_ip = '127.0.0.1'
+let g:mkdp_open_ip = '10.1.1.100'
 
 " use a custom port to start server or empty for random
 let g:mkdp_port = '50100'
@@ -139,7 +139,11 @@ let g:mkdp_echo_preview_url = 0
 " a custom vim function name to open preview page
 " this function will receive url as param
 " default is empty
-let g:mkdp_browserfunc = ''
+  function OpenMarkdownPreview (url)
+    " execute "silent ! fuser -k 50100/tcp"
+    echom a:url
+  endfunction
+let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 
 " options for markdown render
 " mkit: markdown-it options for render

@@ -182,6 +182,8 @@ local Nmappings = {
 		x = { "<Plug>VimwikiRemoveDone", "Remove [x]" },
 		t = { "<Plug>VimwikiNextTask", "Next checkbox" },
 		s = { "<CMD>call GetSyntax()<CR>", "Show highlight group" },
+		p = { "<CMD>MarkdownPreview<CR>", "Markdown Preview" },
+		P = { "<CMD>MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
 	},
 
 	x = {
