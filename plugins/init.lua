@@ -223,6 +223,14 @@ return function(plugins)
 
 		-- csv.vim:: Open csv files
 		{ "chrisbra/csv.vim" },
+
+		-- markdown-preview
+		{
+			"iamcco/markdown-preview.nvim",
+			run = function()
+				vim.fn["mkdp#util#install"]()
+			end,
+		},
 	}
 
 	-- Disabled Default Plugins
