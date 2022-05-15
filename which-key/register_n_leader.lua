@@ -41,6 +41,8 @@ local Nmappings = {
 	-- ["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
 	["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
 
+	e = { "<cmd>Telescope file_browser<cr>", "File Explorer" },
+
 	l = {
 		-- Github Copilot
 		c = { "<cmd>Copilot<cr>", "Copilot" },
@@ -182,7 +184,7 @@ local Nmappings = {
 		x = { "<Plug>VimwikiRemoveDone", "Remove [x]" },
 		t = { "<Plug>VimwikiNextTask", "Next checkbox" },
 		s = { "<CMD>call GetSyntax()<CR>", "Show highlight group" },
-		p = { "<CMD>MarkdownPreview<CR>", "Markdown Preview" },
+		p = { "<CMD>MarkdownPreviewToggle<CR>", "Markdown Preview Toggle" },
 		P = { "<CMD>MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
 	},
 

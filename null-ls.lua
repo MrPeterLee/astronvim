@@ -63,7 +63,7 @@ return function()
 			builtins.formatting.shfmt,
 
 			builtins.diagnostics.shellcheck,
-			builtins.diagnostics.codespell,
+			-- builtins.diagnostics.codespell,
 
 			-- Spell completion for text files
 			builtins.completion.spell.with({

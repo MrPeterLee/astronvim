@@ -153,6 +153,13 @@ return function(plugins)
 				require("telescope").load_extension("project")
 			end,
 		},
+		{
+			"nvim-telescope/telescope-file-browser.nvim",
+			after = "telescope.nvim",
+			config = function()
+				require("telescope").load_extension("file_browser")
+			end,
+		},
 
 		-- display function context on top of the screen
 		-- good plugin, but prompts a deprecation warning; disabled temporarily
@@ -236,6 +243,9 @@ return function(plugins)
 	-- Disabled Default Plugins
 	plugins["glepnir/dashboard-nvim"] = nil
 	plugins["declancm/cinnamon.nvim"] = { disabled = true }
+
+	--- scroll plugin used by AstroNvim <= v1.2.0
+	plugins["karb94/neoscroll.nvim"] = nil
 
 	-- plugins["max397574/better-escape.nvim"] = nil
 	-- plugins["lukas-reineke/indent-blankline.nvim"] = nil

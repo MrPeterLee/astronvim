@@ -45,6 +45,8 @@ return function()
 
 	-- set tab=4 spaces for python
 	g.python_recommended_style = true
+	g.shiftwidth = 4
+	g.tabstop = 4
 
 	-- copilot
 	g.copilot_no_tab_map = true
