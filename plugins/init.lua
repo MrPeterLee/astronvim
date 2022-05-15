@@ -242,7 +242,7 @@ return function(plugins)
 
 	-- Disabled Default Plugins
 	plugins["glepnir/dashboard-nvim"] = nil
-	plugins["declancm/cinnamon.nvim"] = { disabled = true }
+	-- plugins["declancm/cinnamon.nvim"] = { disabled = true }
 
 	--- scroll plugin used by AstroNvim <= v1.2.0
 	plugins["karb94/neoscroll.nvim"] = nil
