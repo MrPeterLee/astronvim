@@ -238,6 +238,11 @@ return function(plugins)
 				vim.fn["mkdp#util#install"]()
 			end,
 		},
+
+		-- jupyter_ascending
+		{
+		"untitled-ai/jupyter_ascending",
+		},
 	}
 
 	-- Disabled Default Plugins

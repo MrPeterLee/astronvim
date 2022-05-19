@@ -1,5 +1,15 @@
+
+" Python Configurations
 " Auto create python file skeleton
 autocmd BufNewFile  *.py	0r ~/.config/nvim/skeleton/skeleton.py
+
+" Auto format Python files
+" autocmd BufWritePre *.py   ks|call FormatPythonFiles()|'s
+" fun FormatPythonFiles()
+"   exe "silent," .. l .. "g/id: /s/id: .*/id:            Peter Lee (peter.lee@finclab.com)"
+" endfun
+
+
 
 " Auto update the last-update time
 autocmd BufWritePre,FileWritePre *.py   ks|call UpdatePythonHeader()|'s
@@ -13,6 +23,10 @@ fun UpdatePythonHeader()
   \ strftime("%Y-%b-%d %H:%M:%S")
   " exe "1," .. l .. "g/id: /s/id: .*/id:            Peter Lee (peter.lee@finclab.com)"
 endfun
+
+
+
+
 
 autocmd FileType markdown setlocal spell
 " Disable cmp auto-complete for markdown
