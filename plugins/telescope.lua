@@ -5,6 +5,7 @@ end
 
 local actions = require("telescope.actions")
 local hop = telescope.extensions.hop
+local trouble = require("trouble.providers.telescope")
 
 return {
 	defaults = {
@@ -28,7 +29,11 @@ return {
 			},
 		},
 		mappings = {
+			n = { ["<c-t>"] = trouble.open_with_trouble },
 			i = {
+				-- Trouble
+				["<c-t>"] = trouble.open_with_trouble,
+
 				-- Hop
 				["<C-h>"] = hop.hop,
 				["<C-space>"] = function(prompt_bufnr)

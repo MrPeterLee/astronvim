@@ -1,16 +1,34 @@
-
+" ----------========== Python Skeleton ==========--------- "
 " Python Configurations
 " Auto create python file skeleton
 autocmd BufNewFile  *.py	0r ~/.config/nvim/skeleton/skeleton.py
 
-" Auto format Python files
-" autocmd BufWritePre *.py   ks|call FormatPythonFiles()|'s
-" fun FormatPythonFiles()
-"   exe "silent," .. l .. "g/id: /s/id: .*/id:            Peter Lee (peter.lee@finclab.com)"
-" endfun
 
+" ----------========== Jupyter Notebook: Jupyter_Ascending ==========--------- "
+fun MoveToPreviousBlock()
+  " Move the current cursort to the previous code block (heading identifier: `# %%`)
+  silent! eval search('# %%', 'b')
+  silent! eval search('# %%', 'b')
+  normal j
+endfun
+fun MoveToNextBlock()
+  " Move the current cursort to the next code block (heading identifier: `# %%`)
+  silent! eval search('# %%')
+  normal j
+endfun
+" Configure hotkeys when editing Jupyter Notebook sync files
+function! SetupJupyterNotebookSync()
+  nnoremap <buffer> <F13> :silent write \|\| call jupyter_ascending#execute() <ENTER>
+  inoremap <buffer> <F13> <C-O>:silent write \|\| call jupyter_ascending#execute() <ENTER>
+  nnoremap <buffer> <C-Enter> :silent write \|\| call jupyter_ascending#execute() <ENTER>
+  inoremap <buffer> <C-Enter> <C-O>:silent write \|\| call jupyter_ascending#execute() <ENTER>
+  " map < :silent! eval search('# %%', 'b') \|\| normal! j<ENTER>
+  map < :call MoveToPreviousBlock() <CR>
+  map > :call MoveToNextBlock() <CR>
+endfunction
+autocmd BufRead,BufNewFile *.sync.py call SetupJupyterNotebookSync()
 
-
+" ----------========== Update `last_update` datetime in Python Header ==========--------- "
 " Auto update the last-update time
 autocmd BufWritePre,FileWritePre *.py   ks|call UpdatePythonHeader()|'s
 fun UpdatePythonHeader()
@@ -25,15 +43,15 @@ fun UpdatePythonHeader()
 endfun
 
 
-
-
-
+" ----------========== Markdown Configurations ==========--------- "
 autocmd FileType markdown setlocal spell
 " Disable cmp auto-complete for markdown
 autocmd FileType markdown lua require'cmp'.setup.buffer {
 \   completion = { autocomplete = false }
 \ }
 
+
+" ----------========== Misc ==========--------- "
 " augroup formatting 
 "   autocmd!
 "   autocmd FileType markdown setlocal formatprg=prettier\ --parser\ markdown

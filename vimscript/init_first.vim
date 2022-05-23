@@ -1,3 +1,31 @@
+" ----------========== Capture Special Keys from iTerm ==========--------- "
+" use some unused function key codes to
+" make special key combos work in terminal
+set  <F13>=O2P
+map  <F13> <C-CR>
+map! <F13> <C-CR>
+
+set  <F14>=O2Q
+map  <F14> <S-CR>
+map! <F14> <S-CR>
+
+set  <F15>=O2R
+map  <F15> <C-Space>
+map! <F15> <C-Space>
+
+set  <F16>=O2S
+map  <F16> <S-Space>
+map! <F16> <S-Space>
+
+" open above / below current line
+" inoremap <S-CR> <C-O>O
+" inoremap <C-CR> <C-O>o
+
+" insert above / below current line
+" noremap <S-Space> mzO<Esc>j`z
+" noremap <C-Space> mzo<Esc>k`z
+
+
 " ----------========== VimWiki ==========--------- "
 let g:vimwiki_list = [{'path': '~/ts/journal/',
                      \ 'name': 'Trading Journal', 
