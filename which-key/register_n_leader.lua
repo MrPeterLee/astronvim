@@ -42,6 +42,9 @@ local Nmappings = {
 	["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
 
 	e = { "<cmd>Telescope file_browser<cr>", "File Explorer" },
+	g = {
+		g = { '<cmd>:cd %:p:h || lua require("core.utils").toggle_term_cmd "lazygit"<cr>', "LazyGit" },
+	},
 
 	r = { "<cmd>silent write || call jupyter_ascending#execute()<cr>", "Run Line" },
 	R = { "<cmd>silent write || call jupyter_ascending#execute_all()<cr>", "Run All" },
@@ -54,6 +57,10 @@ local Nmappings = {
 		w = { "<cmd>Trouble workspce_diagnostics<cr>", "Workspace Diagnostic" },
 		l = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostic" },
 		q = { "<cmd>Trouble quickfix<cr>", "Trouble Quickfix" },
+		F = {
+			"<cmd>silent !black % || silent !autoflake --in-place --expand-star-imports --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables %<cr>",
+			"Format .py",
+		},
 
 		H = {
 			"<cmd>:0 | let blank=''|let t='\"\"\" {Module Name}'|put=t|put=blank|let t='id:            Peter Lee (peter.lee@finclab.com)'|put=t|let t='last_update:   ' . strftime('%Y-%m-%d %H:%M:%S %Z')|put=t|let t='type:          lib'|put=t|let t='sensitivity:   datalab@finclab.com'|put=t|let t='platform:      any'|put=t|let t='description:   {Description}'|put=t|let t='\"\"\"'|put=t<CR>",
@@ -100,6 +107,8 @@ local Nmappings = {
 		p = { '<cmd>lua require("core.utils").toggle_term_cmd("ipython")<cr>', "iPython" },
 		-- toggle ipython in terminal
 		g = { '<cmd>lua require("core.utils").toggle_term_cmd("export TERM=xterm && glances")<cr>', "glances" },
+		t = { "<cmd>ToggleTerm dir='git_dir' direction='tab'<CR>", "Term in New Tab" },
+		H = { '<cmd>lua require("core.utils").toggle_term_cmd("sudo htop")<cr>', "Htop" },
 	},
 
 	f = {

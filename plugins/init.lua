@@ -2,6 +2,8 @@
 -- The plugins plugins.init override table (or function(table)...end) can be placed in the file user/plugins/init.lua
 -- which would be a lua file that returns the override table or function(table)...end.
 
+local C = require("default_theme.colors")
+
 return function(plugins)
 	local my_plugins = {
 

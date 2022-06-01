@@ -6,6 +6,8 @@ return {
 			return vim.o.columns * 0.4
 		end
 	end,
+
+	-- highlights = require("rose-pine.plugins.toggleterm"), -- this is the color scheme
 	open_mapping = [[<c-\>]],
 	hide_numbers = true, -- hide the number column in toggleterm buffers
 	shade_terminals = true,

@@ -25,6 +25,20 @@ return {
 		vim.cmd([[omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>]])
 		vim.cmd([[vnoremap <silent> m :lua require('tsht').nodes()<CR>]])
 
+		-- Toggle Term
+		map(
+			"n",
+			"<C-t>",
+			[[<C-\><C-n><Esc>:silent ToggleTerm direction='float'<CR>]],
+			{ desc = "Open Terminal (Vertical)", noremap = true }
+		)
+		map(
+			"n",
+			"<C-\\>",
+			[[<C-\><C-n><Esc>:silent ToggleTerm direction='vertical'<CR>]],
+			{ desc = "Open Terminal (Float)", noremap = true }
+		)
+
 		-- hop
 		vim.cmd([[ hi HopNextKey cterm=bold ctermfg=198 gui=bold guifg=#ff007c]])
 		vim.cmd([[ hi HopNextKey1 cterm=bold ctermfg=198 gui=bold guifg=#ff007c]])
@@ -43,6 +57,11 @@ return {
 		map("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Switch line down" })
 
 		-- tmux navigation
+		map("i", "<A-h>", '<Esc>:lua require("tmux").move_left()<CR>', { desc = "Tmux navigate left" })
+		map("i", "<A-l>", '<Esc>:lua require("tmux").move_right() <CR>', { desc = "Tmux navigate right" })
+		map("i", "<A-j>", '<Esc>:lua require("tmux").move_bottom()<CR>', { desc = "Tmux navigate bottom" })
+		map("i", "<A-k>", '<Esc>:lua require("tmux").move_top()<CR>', { desc = "Tmux navigate up" })
+
 		map("n", "<A-h>", function()
 			require("tmux").move_left()
 		end, { desc = "Tmux navigate left" })
