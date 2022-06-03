@@ -21,9 +21,22 @@ return {
 		--unmap("v", "K")
 		--unmap("n", "<A-j>")
 
+		-- Move buffers
+		map("n", "M", "<cmd>BufferLineTogglePin<cr>", { desc = "Move buffer tab right" })
+		map("n", ">", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
+		map("n", "<", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
+
 		-- select python method / class
 		vim.cmd([[omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>]])
 		vim.cmd([[vnoremap <silent> m :lua require('tsht').nodes()<CR>]])
+
+		-- Send line to ToggleTerm
+		vim.cmd([[ nnoremap <C-Enter> :silent write \|\| ToggleTermSendCurrentLine <ENTER> ]])
+		vim.cmd([[ inoremap <C-Enter> <C-O>:silent write \|\| ToggleTermSendCurrentLine <ENTER> ]])
+		vim.cmd([[ vnoremap <C-Enter> :ToggleTermSendVisualLines <ENTER> ]])
+		vim.cmd([[ nnoremap <F12> :silent write \|\| ToggleTermSendCurrentLine <ENTER> ]])
+		vim.cmd([[ inoremap <F12> <C-O>:silent write \|\| ToggleTermSendCurrentLine <ENTER> ]])
+		vim.cmd([[ vnoremap <F12> :ToggleTermSendVisualLines <ENTER> ]])
 
 		-- Toggle Term
 		map(
@@ -49,10 +62,10 @@ return {
 		map("v", "t", "<cmd>lua require'hop'.hint_char2()<cr>", { noremap = true })
 
 		-- move current line up and down
-		map("n", "<C-k>", ":m .-2<CR>==", { desc = "Switch line up" })
-		map("n", "<C-j>", ":m .+1<CR>==", { desc = "Switch line down" })
-		map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { desc = "Switch line up" })
-		map("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { desc = "Switch line down" })
+		-- map("n", "<C-k>", ":m .-2<CR>==", { desc = "Switch line up" })
+		-- map("n", "<C-j>", ":m .+1<CR>==", { desc = "Switch line down" })
+		-- map("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { desc = "Switch line up" })
+		-- map("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { desc = "Switch line down" })
 		map("v", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Switch line up" })
 		map("v", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Switch line down" })
 
@@ -61,7 +74,6 @@ return {
 		map("i", "<A-l>", '<Esc>:lua require("tmux").move_right() <CR>', { desc = "Tmux navigate right" })
 		map("i", "<A-j>", '<Esc>:lua require("tmux").move_bottom()<CR>', { desc = "Tmux navigate bottom" })
 		map("i", "<A-k>", '<Esc>:lua require("tmux").move_top()<CR>', { desc = "Tmux navigate up" })
-
 		map("n", "<A-h>", function()
 			require("tmux").move_left()
 		end, { desc = "Tmux navigate left" })

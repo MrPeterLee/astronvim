@@ -33,13 +33,10 @@ return {
 				[[<C-\><C-n><Esc>:silent ToggleTerm<CR>]],
 				{ desc = "Close Terminal", noremap = true }
 			)
-			vim.api.nvim_buf_set_keymap(
-				0,
-				"t",
-				"<esc>",
-				[[<C-\><C-n>]],
-				{ desc = "Terminal normal mode", noremap = true }
-			)
+			vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], {
+				desc = "Terminal normal mode",
+				noremap = true,
+			})
 			-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], { desc = "Terminal normal mode" })
 			-- Normal Mode
 			vim.api.nvim_buf_set_keymap(
