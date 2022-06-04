@@ -22,9 +22,9 @@ return {
 		--unmap("n", "<A-j>")
 
 		-- Move buffers
-		map("n", "M", "<cmd>BufferLineTogglePin<cr>", { desc = "Move buffer tab right" })
-		map("n", ">", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
-		map("n", "<", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
+		map("n", "}", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer tab right" })
+		map("n", "{", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer tab left" })
+		map("n", "M", "<cmd>BufferLineTogglePin<cr>", { desc = "Pin Buffer" })
 
 		-- select python method / class
 		vim.cmd([[omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>]])

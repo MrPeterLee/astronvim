@@ -246,6 +246,18 @@ return function(plugins)
 			"untitled-ai/jupyter_ascending.vim",
 		},
 
+		-- -- LSP symbols
+		-- {
+		-- 	"stevearc/aerial.nvim",
+		-- 	opt = true,
+		-- 	setup = function()
+		-- 		require("core.utils").defer_plugin("aerial.nvim")
+		-- 	end,
+		-- 	config = function()
+		-- 		require("user.plugins.aerial").config()
+		-- 	end,
+		-- },
+
 		-- trouble
 		{
 			"folke/trouble.nvim",
@@ -262,10 +274,7 @@ return function(plugins)
 
 	-- Disabled Default Plugins
 	plugins["glepnir/dashboard-nvim"] = nil
-	-- plugins["declancm/cinnamon.nvim"] = { disabled = true }
-
-	--- scroll plugin used by AstroNvim <= v1.2.0
-	plugins["karb94/neoscroll.nvim"] = nil
+	plugins["declancm/cinnamon.nvim"] = { disabled = true }
 
 	-- plugins["max397574/better-escape.nvim"] = nil
 	-- plugins["lukas-reineke/indent-blankline.nvim"] = nil

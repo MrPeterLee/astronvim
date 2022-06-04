@@ -28,14 +28,9 @@
 --     end
 -- end
 
-return function()
-	local status_ok, null_ls = pcall(require, "null-ls")
 
-	if not status_ok then
-		print("NULL-LS status is not OK!!! Please check.")
-		return
-	end
-
+local null_ls = require "null-ls"
+return {
 	-- Formatting and linting
 	-- https://github.com/jose-elias-alvarez/null-ls.nvim
 	--
@@ -45,52 +40,58 @@ return function()
 	-- Check supported linters
 	-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
-	local builtins = null_ls.builtins
-
-	null_ls.setup({
-
-		debug = false,
-
 		sources = {
 
-			builtins.code_actions.gitsigns,
-			builtins.code_actions.shellcheck,
+			null_ls.builtins.code_actions.gitsigns,
+			null_ls.builtins.code_actions.shellcheck,
 
-			builtins.formatting.stylua,
-			builtins.formatting.black,
-			builtins.formatting.isort,
-			builtins.formatting.prettier,
-			builtins.formatting.shfmt,
+			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.prettier.with { extra_filetypes = { "rmd" } },
+			null_ls.builtins.formatting.isort,
+			null_ls.builtins.formatting.shfmt,
 
-			builtins.diagnostics.shellcheck,
+			null_ls.builtins.diagnostics.shellcheck,
 			-- builtins.diagnostics.codespell,
 
 			-- Spell completion for text files
-			builtins.completion.spell.with({
+			null_ls.builtins.completion.spell.with({
 				Filetypes = { "markdown", "text" },
 			}),
 
 			-- Spell diagnostic for text files
-			-- builtins.diagnostics.cspell,
+			-- null_ls.builtins.diagnostics.cspell,
 
 			-- zsh - only highlights "parsing error" as a msg
-			-- builtins.diagnostics.zsh,
+			-- null_ls.builtins.diagnostics.zsh,
 
 			-- makefile
-			-- builtins.diagnostics.checkmate,
+			-- null_ls.builtins.diagnostics.checkmate,
 			-- github workflow
-			-- builtins.diagnostics.actionlint,
+			-- null_ls.builtins.diagnostics.actionlint,
 		},
 
 		-- You can remove this on attach function to disable format on save
-		on_attach = function(client)
-			if client.resolved_capabilities.document_formatting then
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					desc = "Auto format before save",
-					pattern = "<buffer>",
-					callback = vim.lsp.buf.formatting,
-				})
-			end
-		end,
-	})
-end
+on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        desc = "Auto format before save",
+        pattern = "<buffer>",
+        callback = function()
+          vim.lsp.buf.formatting_sync()
+        end,
+      })
+    end
+  end,
+}
+
+
+		-- on_attach = function(client)
+		-- 	if client.resolved_capabilities.document_formatting then
+		-- 		vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 			desc = "Auto format before save",
+		-- 			pattern = "<buffer>",
+		-- 			callback = vim.lsp.buf.formatting,
+		-- 		})
+		-- 	end
+		-- end,

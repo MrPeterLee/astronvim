@@ -51,6 +51,8 @@ local Nmappings = {
 
 	-- Coding Actions
 	k = {
+		j = { "<cmd>silent !ts jupyter start --port 60000 --file % &<cr>", "Start Jupyter" },
+		J = { "<cmd>silent !ts jupyter stop --port 60000<cr> &", "Stop Jupyter" },
 		r = { vim.lsp.buf.rename, "Rename" },
 		c = { "<cmd>Copilot<cr>", "Copilot" },
 		p = { "<cmd>Copilot panel<cr>", "Copilot Panel" },

@@ -22,11 +22,13 @@ function! SetupJupyterNotebookSync()
   inoremap <buffer> <F12> <C-O>:silent write \|\| call jupyter_ascending#execute() <ENTER>
   nnoremap <buffer> <F10> :silent write \|\| call jupyter_ascending#execute() \|\| call MoveToNextBlock() <ENTER><ENTER>
   inoremap <buffer> <F10> <C-O>:silent write \|\| call jupyter_ascending#execute() \|\| call MoveToNextBlock() <ENTER><ENTER>
+
   nnoremap <buffer> <C-Enter> :silent write \|\| call jupyter_ascending#execute() <ENTER>
   inoremap <buffer> <C-Enter> <C-O>:silent write \|\| call jupyter_ascending#execute() <ENTER>
-  " map < :silent! eval search('# %%', 'b') \|\| normal! j<ENTER>
-  map < :call MoveToPreviousBlock() <CR>
-  map > :call MoveToNextBlock() <CR>
+
+  " Move around ## % blocks using hotkey
+  nnoremap <buffer> < :call MoveToPreviousBlock() <CR>
+  nnoremap <buffer> > :call MoveToNextBlock() <CR>
 endfunction
 autocmd BufRead,BufNewFile *.sync.py call SetupJupyterNotebookSync()
 
