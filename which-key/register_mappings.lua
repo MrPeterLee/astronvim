@@ -15,7 +15,7 @@ return {
 			-- ["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
 			["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
 
-			e = { "<cmd>Telescope file_browser<cr>", "File Explorer" },
+			e = { "<cmd>cd %:p:h || Neotree toggle<cr>", "File Explorer" },
 			g = {
 				g = { '<cmd>:cd %:p:h || lua require("core.utils").toggle_term_cmd "lazygit"<cr>', "LazyGit" },
 			},
@@ -25,35 +25,94 @@ return {
 
 			-- Coding Actions
 			k = {
+				l = {
+					function()
+						local filename = vim.fn.expand("%:t")
+
+						utils.async_run({
+							"ts",
+							"research",
+							"start",
+							"--port",
+							"8888",
+							"--detach",
+							"--project",
+							vim.fn.expand("%:p:h"),
+						}, function()
+							utils.quick_notification(
+								"Lean research session online: http://localhost:8888/notebooks/" .. filename .. ".ipynb"
+							)
+						end)
+					end,
+					"Lean Research",
+				},
+				s = {
+					function()
+						utils.async_run({
+							"ts",
+							"jupyter",
+							"stop",
+							"--port",
+							"8888",
+						}, function() end)
+						utils.async_run({
+							"ts",
+							"research",
+							"stop",
+							"--port",
+							"8888",
+						}, function()
+							utils.quick_notification("Terminated jupyter session(s) on port 8888")
+						end)
+					end,
+					"Lean Research (Stop)",
+				},
+				k = {
+					function()
+						local folder = vim.fn.expand("%:p:h")
+						print("Running backtest on project: " .. folder)
+						vim.cmd("silent! write")
+						utils.async_run({
+							"ts",
+							"backtest",
+							"--port",
+							"8888",
+							"--file",
+							"--detach",
+							vim.fn.expand("%:p"),
+						}, function()
+							local backtest_folder = vim.fn.getqflist()[2]["text"]
+							utils.quick_notification("Backtest completed for: " .. backtest_folder)
+							vim.cmd(
+								"call timer_start(2000, { tid -> execute('e "
+									.. backtest_folder
+									.. "/log.txt"
+									.. " || normal G')})"
+							)
+						end)
+					end,
+					"Kick-off Backtest",
+				},
 				j = {
 					function()
-						-- vim.cmd("silent! write")
 						local filename = vim.fn.expand("%:t")
 						utils.async_run(
-							{ "ts", "jupyter", "start", "--port", "60000", "--file ", vim.fn.expand(":r") },
+							{ "ts", "jupyter", "start", "--port", "8888", "--detach", "--file", vim.fn.expand("%:p") },
 							function()
 								utils.quick_notification(
-									"Jupyter session online: http://localhost:60000/notebooks/" .. filename .. ".ipynb"
+									"Jupyter session online: http://localhost:8888/notebooks/" .. filename .. ".ipynb"
 								)
 							end
 						)
 					end,
-					"Start Jupyter",
-				},
-				J = {
-					function()
-						utils.async_run({ "ts", "jupyter", "stop", "--port", "60000" }, function()
-							utils.quick_notification("Terminated Jupyter session on port 60000")
-						end)
-					end,
-					"Stop Jupyter",
+					"Jupyter",
 				},
 				r = { vim.lsp.buf.rename, "Rename" },
 				c = { "<cmd>Copilot<cr>", "Copilot" },
 				p = { "<cmd>Copilot panel<cr>", "Copilot Panel" },
 				U = { "<cmd>Copilot status<cr>", "Copilot Status" },
 				f = {
-					"<cmd>silent !black % || silent !autoflake --in-place --expand-star-imports --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables %<cr>",
+					"<cmd>silent write | silent !black % | autoflake -i % --expand-star-imports --remove-all-unused-imports --ignore-init-module-imports --remove-duplicate-keys --remove-unused-variables <cr>",
 					"Format .py",
 				},
 				F = { vim.lsp.buf.formatting_sync, "LSP Format" },

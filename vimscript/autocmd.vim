@@ -27,8 +27,8 @@ function! SetupJupyterNotebookSync()
   inoremap <buffer> <C-Enter> <C-O>:silent write \|\| call jupyter_ascending#execute() <ENTER>
 
   " Move around ## % blocks using hotkey
-  nnoremap <buffer> < :call MoveToPreviousBlock() <CR>
-  nnoremap <buffer> > :call MoveToNextBlock() <CR>
+  nnoremap <buffer> { :call MoveToPreviousBlock() <CR>
+  nnoremap <buffer> } :call MoveToNextBlock() <CR>
 endfunction
 autocmd BufRead,BufNewFile *.sync.py call SetupJupyterNotebookSync()
 

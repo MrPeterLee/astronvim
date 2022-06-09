@@ -126,8 +126,9 @@ return {
 		map("i", "<S-Tab>", "<C-V><Tab>", { desc = "Tab character" })
 
 		-- terminal mappings
-		map("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
-		map("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quite" })
+		-- map("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
+		-- map("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quit" })
+
 		-- Buffer switching
 		map(
 			"n",

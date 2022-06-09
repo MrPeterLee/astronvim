@@ -18,6 +18,8 @@ return {
 
 		-- ToggleTerm
 		function _G.set_terminal_keymaps()
+			vim.api.nvim_buf_set_keymap(0, "n", "<C-c>", nil) -- Unbind <C-c>
+			vim.api.nvim_buf_set_keymap(0, "n", "<esc>", nil) -- Unbind <esc>
 			vim.api.nvim_buf_set_keymap(0, "n", "<cr>", "i<cr>", { noremap = true })
 			vim.api.nvim_buf_set_keymap(
 				0,
