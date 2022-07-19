@@ -21,14 +21,15 @@ return function(h)
 	h.SpellCap = { fg = C.fg, bg = C.grey_3, style = "undercurl" }
 	h.SpellLocal = { fg = C.fg }
 
-	h.VimwikiHeader1 = { fg = C.orange_2, style = "bold" }
-	h.VimwikiHeader2 = { fg = C.orange_1, style = "bold" }
-	h.VimwikiHeader3 = { fg = C.orange }
-	h.VimwikiHeader4 = { fg = C.yellow_1 }
-	h.VimwikiHeader5 = { fg = C.yellow }
+	h.VimwikiHeader1 = { fg = C.gold, style = "bold" }
+	h.VimwikiHeader2 = { fg = C.css, style = "bold" }
+	h.VimwikiHeader3 = { fg = C.orange_2, style = "bold" }
+	h.VimwikiHeader4 = { fg = C.green_1 }
+	h.VimwikiHeader5 = { fg = C.purple_1 }
 	h.VimwikiHeader6 = { fg = C.yellow_2 }
-	h.VimwikiHeaderChar = { fg = C.yellow }
-	h.VimwikiList = { fg = C.yellow }
+	h.VimwikiHeaderChar = { fg = C.blue_2 }
+	h.VimwikiList = { fg = C.green }
+	h.VimwikiListTodo = { fg = C.green }
 	h.VimwikiItalic = { bg = C.grey_3, fg = C.purple }
 	h.VimwikiCode = { fg = C.cyan }
 	h.VimwikiBold = { bg = C.grey_3, fg = C.gold }

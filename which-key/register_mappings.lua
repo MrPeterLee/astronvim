@@ -1,4 +1,5 @@
 local utils = require("user.utils")
+local alt_file = require("user.plugins.alternate-file")
 
 return {
 	n = {
@@ -15,6 +16,8 @@ return {
 			-- ["r"] = { "<cmd>SendHere<cr>", "Set REPL" },
 			["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
 
+			["w"] = { "<cmd> silent write || normal zz <cr>", "Save" },
+
 			e = { "<cmd>cd %:p:h || Neotree toggle<cr>", "File Explorer" },
 			g = {
 				g = { '<cmd>:cd %:p:h || lua require("core.utils").toggle_term_cmd "lazygit"<cr>', "LazyGit" },
@@ -22,6 +25,14 @@ return {
 
 			r = { "<cmd>silent write || call jupyter_ascending#execute()<cr>", "Run Line" },
 			R = { "<cmd>silent write || call jupyter_ascending#execute_all()<cr>", "Run All" },
+
+			-- Alternate file
+			a = {
+				function()
+					alt_file.main(vim.fn.expand("%:p"))
+				end,
+				"Alt File",
+			},
 
 			-- Coding Actions
 			k = {
@@ -76,15 +87,15 @@ return {
 							"ts",
 							"backtest",
 							"--port",
-							"8888",
-							"--file",
+							"60002",
 							"--detach",
+							"--file",
 							vim.fn.expand("%:p"),
 						}, function()
 							local backtest_folder = vim.fn.getqflist()[2]["text"]
 							utils.quick_notification("Backtest completed for: " .. backtest_folder)
 							vim.cmd(
-								"call timer_start(2000, { tid -> execute('e "
+								"call timer_start(8000, { tid -> execute('e "
 									.. backtest_folder
 									.. "/log.txt"
 									.. " || normal G')})"

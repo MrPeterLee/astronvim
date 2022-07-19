@@ -227,6 +227,9 @@ return {
 	-- 	end,
 	-- },
 
+	-- clipboard plugin
+	["ojroques/vim-oscyank"] = {},
+
 	-- trouble
 	["folke/trouble.nvim"] = {
 		requires = "kyazdani42/nvim-web-devicons",

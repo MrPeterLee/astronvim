@@ -3,6 +3,8 @@
 " Auto create python file skeleton
 autocmd BufNewFile  *.py	0r ~/.config/nvim/skeleton/skeleton.py
 
+" ----------========== Auto Yank to OS System Clipboard ==========--------- "
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
 
 " ----------========== Jupyter Notebook: Jupyter_Ascending ==========--------- "
 fun MoveToPreviousBlock()

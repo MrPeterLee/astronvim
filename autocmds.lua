@@ -18,9 +18,11 @@ return {
 
 		-- ToggleTerm
 		function _G.set_terminal_keymaps()
-			vim.api.nvim_buf_set_keymap(0, "n", "<C-c>", nil) -- Unbind <C-c>
-			vim.api.nvim_buf_set_keymap(0, "n", "<esc>", nil) -- Unbind <esc>
-			vim.api.nvim_buf_set_keymap(0, "n", "<cr>", "i<cr>", { noremap = true })
+			-- vim.api.nvim_buf_set_keymap(0, "t", "<C-c>", "<Nop>", { noremap = true })
+			vim.api.nvim_buf_set_keymap(0, "t", "<Esc>", "kj", { noremap = true })
+			-- vim.api.nvim_buf_set_keymap(0, "t", "jk", "<Nop>", { noremap = true })
+			-- vim.api.nvim_buf_set_keymap(0, "t", "<Cr>", "i<Cr>", { noremap = true })
+			-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], { desc = "Terminal normal mode", noremap = true, })
 			vim.api.nvim_buf_set_keymap(
 				0,
 				"t",
@@ -35,10 +37,6 @@ return {
 				[[<C-\><C-n><Esc>:silent ToggleTerm<CR>]],
 				{ desc = "Close Terminal", noremap = true }
 			)
-			vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], {
-				desc = "Terminal normal mode",
-				noremap = true,
-			})
 			-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], { desc = "Terminal normal mode" })
 			-- Normal Mode
 			vim.api.nvim_buf_set_keymap(
